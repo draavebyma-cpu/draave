@@ -44,6 +44,12 @@ const collections = {
         images: [
             "velvet-mahroon-1.jpg",
             "velvet-mahroon-2.jpg",
+            "velvet-mahroon-h1.jpg",
+            "velvet-mahroon-h2.jpg",
+            "velvet-mahroon-h3.jpg",
+            "velvet-mahroon-h4.jpg",
+            "velvet-mahroon-h5.jpg",
+            "velvet-mahroon-h6.jpg",
         ]
     },
 
@@ -58,6 +64,14 @@ const collections = {
         images: [
             "velvet-chocolate-1.jpg",
             "velvet-chocolate-2.jpg",
+            "velvet-chocolate-h1.jpg",
+            "velvet-chocolate-h2.jpg",
+            "velvet-chocolate-h3.jpg",
+            "velvet-chocolate-h4.jpg",
+            "velvet-chocolate-h5.jpg",
+            "velvet-chocolate-h6.jpg",
+            "velvet-chocolate-h7.jpg",
+            "velvet-chocolate-h8.jpg",
         ]
     },
 
@@ -72,6 +86,13 @@ const collections = {
         images: [
             "velvet-dark-blue-1.jpg",
             "velvet-dark-blue-2.jpg",
+            "velvet-dark-blue-h1.jpg",
+            "velvet-dark-blue-h2.jpg",
+            "velvet-dark-blue-h3.jpg",
+            "velvet-dark-blue-h4.jpg",
+            "velvet-dark-blue-h5.jpg",
+            "velvet-dark-blue-h6.jpg",
+            "velvet-dark-blue-h7.jpg",
         ]
     },
 
@@ -87,6 +108,15 @@ const collections = {
             "velvet-mungiya-1.jpg",
             "velvet-mungiya-2.jpg",
             "velvet-mungiya-3.jpg",
+            "velvet-mungiya-h1.jpg",
+            "velvet-mungiya-h2.jpg",
+            "velvet-mungiya-h3.jpg",
+            "velvet-mungiya-h4.jpg",
+            "velvet-mungiya-h5.jpg",
+            "velvet-mungiya-h6.jpg",
+            "velvet-mungiya-h7.jpg",
+            "velvet-mungiya-h8.jpg",
+            "velvet-mungiya-h9.jpg",
         ]
     },
 
@@ -101,6 +131,19 @@ const collections = {
         images: [
             "gulposh-cutwork-1.jpg",
             "gulposh-cutwork-2.jpg",
+            "gulposh-cutwork-h1.jpg",
+            "gulposh-cutwork-h2.jpg",
+            "gulposh-cutwork-h3.jpg",
+            "gulposh-cutwork-h4.jpg",
+            "gulposh-cutwork-h5.jpg",
+            "gulposh-cutwork-h6.jpg",
+            "gulposh-cutwork-h7.jpg",
+            "gulposh-cutwork-h8.jpg",
+            "gulposh-cutwork-h9.jpg",
+            "gulposh-cutwork-h10.jpg",
+            "gulposh-cutwork-h11.jpg",
+            "gulposh-cutwork-h12.jpg",
+            "gulposh-cutwork-h13.jpg",
         ]
     },
 
@@ -115,6 +158,15 @@ const collections = {
         images: [
             "sequence-1.jpg",
             "sequence-2.jpg",
+            "sequence-h1.jpg",
+            "sequence-h2.jpg",
+            "sequence-h3.jpg",
+            "sequence-h4.jpg",
+            "sequence-h5.jpg",
+            "sequence-h6.jpg",
+            "sequence-h7.jpg",
+            "sequence-h8.jpg",
+            "sequence-h9.jpg",
         ]
     },
 
@@ -129,6 +181,14 @@ const collections = {
         images: [
             "kani-1.jpg",
             "kani-2.jpg",
+            "kani-h1.jpg",
+            "kani-h2.jpg",
+            "kani-h3.jpg",
+            "kani-h4.jpg",
+            "kani-h5.jpg",
+            "kani-h6.jpg",
+            "kani-h7.jpg",
+            "kani-h8.jpg",
         ]
     },
 
@@ -144,6 +204,14 @@ const collections = {
             "multani-karalak-1.jpg",
             "multani-karalak-2.jpg",
             "multani-karalak-3.jpg",
+            "multani-karalak-h1.jpg",
+            "multani-karalak-h2.jpg",
+            "multani-karalak-h3.jpg",
+            "multani-karalak-h4.jpg",
+            "multani-karalak-h5.jpg",
+            "multani-karalak-h6.jpg",
+            "multani-karalak-h7.jpg",
+            "multani-karalak-h8.jpg",
         ]
     },
 
@@ -159,6 +227,14 @@ const collections = {
             "booty-1.jpg",
             "booty-2.jpg",
             "booty-3.jpg",
+            "booty-h1.jpg",
+            "booty-h2.jpg",
+            "booty-h3.jpg",
+            "booty-h4.jpg",
+            "booty-h5.jpg",
+            "booty-h6.jpg",
+            "booty-h7.jpg",
+            "booty-h8.jpg",
         ]
     },
 
@@ -173,6 +249,17 @@ const collections = {
         images: [
             "ajrak-siyah-1.jpg",
             "ajrak-siyah-2.jpg",
+            "ajrak-siyah-h1.jpg",
+            "ajrak-siyah-h2.jpg",
+            "ajrak-siyah-h3.jpg",
+            "ajrak-siyah-h4.jpg",
+            "ajrak-siyah-h5.jpg",
+            "ajrak-siyah-h6.jpg",
+            "ajrak-siyah-h7.jpg",
+            "ajrak-siyah-h8.jpg",
+            "ajrak-siyah-h9.jpg",
+            "ajrak-siyah-h10.jpg",
+            "ajrak-siyah-h11.jpg",
         ]
     },
 
@@ -188,6 +275,16 @@ const collections = {
             "naqsha-e-zari-1.jpg",
             "naqsha-e-zari-2.jpg",
             "naqsha-e-zari-3.jpg",
+            "naqsha-e-zari-h1.jpg",
+            "naqsha-e-zari-h2.jpg",
+            "naqsha-e-zari-h3.jpg",
+            "naqsha-e-zari-h4.jpg",
+            "naqsha-e-zari-h5.jpg",
+            "naqsha-e-zari-h6.jpg",
+            "naqsha-e-zari-h7.jpg",
+            "naqsha-e-zari-h8.jpg",
+            "naqsha-e-zari-h9.jpg",
+            "naqsha-e-zari-h10.jpg",
         ]
     },
 
@@ -203,6 +300,23 @@ const collections = {
             "sitara-luxe-1.jpg",
             "sitara-luxe-2.jpg",
             "sitara-luxe-3.jpg",
+            "sitara-luxe-h1.jpg",
+            "sitara-luxe-h2.jpg",
+            "sitara-luxe-h3.jpg",
+            "sitara-luxe-h4.jpg",
+            "sitara-luxe-h5.jpg",
+            "sitara-luxe-h6.jpg",
+            "sitara-luxe-h7.jpg",
+            "sitara-luxe-h8.jpg",
+            "sitara-luxe-h9.jpg",
+            "sitara-luxe-h10.jpg",
+            "sitara-luxe-h11.jpg",
+            "sitara-luxe-h12.jpg",
+            "sitara-luxe-h13.jpg",
+            "sitara-luxe-h14.jpg",
+            "sitara-luxe-h15.jpg",
+            "sitara-luxe-h16.jpg",
+            "sitara-luxe-h17.jpg",
         ]
     },
 
@@ -217,6 +331,8 @@ const collections = {
         images: [
             "regal-drape-1.jpg",
             "regal-drape-2.jpg",
+            "regal-drape-h1.jpg",
+            "regal-drape-h2.jpg",
         ]
     },
 
@@ -232,6 +348,10 @@ const collections = {
             "royal-drape-1.jpg",
             "royal-drape-2.jpg",
             "royal-drape-3.jpg",
+            "royal-drape-h1.jpg",
+            "royal-drape-h2.jpg",
+            "royal-drape-h3.jpg",
+            "royal-drape-h4.jpg",
         ]
     },
 
@@ -246,6 +366,8 @@ const collections = {
         images: [
             "safaid-dastoor-1.jpg",
             "safaid-dastoor-2.jpg",
+            "safaid-dastoor-h1.jpg",
+            "safaid-dastoor-h2.jpg",
         ]
     },
 
@@ -260,6 +382,11 @@ const collections = {
         images: [
             "blanc-dastoor-1.jpg",
             "blanc-dastoor-2.jpg",
+            "blanc-dastoor-h1.jpg",
+            "blanc-dastoor-h2.jpg",
+            "blanc-dastoor-h3.jpg",
+            "blanc-dastoor-h4.jpg",
+            "blanc-dastoor-h5.jpg",
         ]
     },
 
@@ -274,6 +401,12 @@ const collections = {
         images: [
             "pearl-semi-luxe-1.jpg",
             "pearl-semi-luxe-2.jpg",
+            "pearl-semi-luxe-h1.jpg",
+            "pearl-semi-luxe-h2.jpg",
+            "pearl-semi-luxe-h3.jpg",
+            "pearl-semi-luxe-h4.jpg",
+            "pearl-semi-luxe-h5.jpg",
+            "pearl-semi-luxe-h6.jpg",
         ]
     },
 
@@ -289,6 +422,10 @@ const collections = {
             "ivory-semi-luxe-1.jpg",
             "ivory-semi-luxe-2.jpg",
             "ivory-semi-luxe-3.jpg",
+            "ivory-semi-luxe-h1.jpg",
+            "ivory-semi-luxe-h2.jpg",
+            "ivory-semi-luxe-h3.jpg",
+            "ivory-semi-luxe-h4.jpg",
         ]
     },
 
@@ -303,6 +440,18 @@ const collections = {
         images: [
             "atabad-1.jpg",
             "atabad-2.jpg",
+            "atabad-h1.jpg",
+            "atabad-h2.jpg",
+            "atabad-h3.jpg",
+            "atabad-h4.jpg",
+            "atabad-h5.jpg",
+            "atabad-h6.jpg",
+            "atabad-h7.jpg",
+            "atabad-h8.jpg",
+            "atabad-h9.jpg",
+            "atabad-h10.jpg",
+            "atabad-h11.jpg",
+            "atabad-h12.jpg",
         ]
     },
 
@@ -317,6 +466,15 @@ const collections = {
         images: [
             "shangrilla-single-1.jpg",
             "shangrilla-single-2.jpg",
+            "shangrilla-single-h1.jpg",
+            "shangrilla-single-h2.jpg",
+            "shangrilla-single-h3.jpg",
+            "shangrilla-single-h4.jpg",
+            "shangrilla-single-h5.jpg",
+            "shangrilla-single-h6.jpg",
+            "shangrilla-single-h7.jpg",
+            "shangrilla-single-h8.jpg",
+            "shangrilla-single-h9.jpg",
         ]
     },
 
@@ -331,6 +489,13 @@ const collections = {
         images: [
             "shangrilla-double-1.jpg",
             "shangrilla-double-2.jpg",
+            "shangrilla-double-h1.jpg",
+            "shangrilla-double-h2.jpg",
+            "shangrilla-double-h3.jpg",
+            "shangrilla-double-h4.jpg",
+            "shangrilla-double-h5.jpg",
+            "shangrilla-double-h6.jpg",
+            "shangrilla-double-h7.jpg",
         ]
     },
 
@@ -346,6 +511,33 @@ const collections = {
             "shangrilla-black-1.jpg",
             "shangrilla-black-2.jpg",
             "shangrilla-black-3.jpg",
+            "shangrilla-black-h1.jpg",
+            "shangrilla-black-h2.jpg",
+            "shangrilla-black-h3.jpg",
+            "shangrilla-black-h4.jpg",
+            "shangrilla-black-h5.jpg",
+            "shangrilla-black-h6.jpg",
+            "shangrilla-black-h7.jpg",
+            "shangrilla-black-h8.jpg",
+            "shangrilla-black-h9.jpg",
+            "shangrilla-black-h10.jpg",
+            "shangrilla-black-h11.jpg",
+            "shangrilla-black-h12.jpg",
+            "shangrilla-black-h13.jpg",
+            "shangrilla-black-h14.jpg",
+            "shangrilla-black-h15.jpg",
+            "shangrilla-black-h16.jpg",
+            "shangrilla-black-h17.jpg",
+            "shangrilla-black-h18.jpg",
+            "shangrilla-black-h19.jpg",
+            "shangrilla-black-h20.jpg",
+            "shangrilla-black-h21.jpg",
+            "shangrilla-black-h22.jpg",
+            "shangrilla-black-h23.jpg",
+            "shangrilla-black-h24.jpg",
+            "shangrilla-black-h25.jpg",
+            "shangrilla-black-h26.jpg",
+            "shangrilla-black-h27.jpg",
         ]
     },
 
@@ -360,6 +552,15 @@ const collections = {
         images: [
             "monarch-96-1.jpg",
             "monarch-96-2.jpg",
+            "monarch-96-h1.jpg",
+            "monarch-96-h2.jpg",
+            "monarch-96-h3.jpg",
+            "monarch-96-h4.jpg",
+            "monarch-96-h5.jpg",
+            "monarch-96-h6.jpg",
+            "monarch-96-h7.jpg",
+            "monarch-96-h8.jpg",
+            "monarch-96-h9.jpg",
         ]
     },
 
@@ -375,6 +576,18 @@ const collections = {
             "babus-blue-1.jpg",
             "babus-blue-2.jpg",
             "babus-blue-3.jpg",
+            "babus-blue-h1.jpg",
+            "babus-blue-h2.jpg",
+            "babus-blue-h3.jpg",
+            "babus-blue-h4.jpg",
+            "babus-blue-h5.jpg",
+            "babus-blue-h6.jpg",
+            "babus-blue-h7.jpg",
+            "babus-blue-h8.jpg",
+            "babus-blue-h9.jpg",
+            "babus-blue-h10.jpg",
+            "babus-blue-h11.jpg",
+            "babus-blue-h12.jpg",
         ]
     },
 
@@ -390,6 +603,21 @@ const collections = {
             "babus-black-1.jpg",
             "babus-black-2.jpg",
             "babus-black-3.jpg",
+            "babus-black-h1.jpg",
+            "babus-black-h2.jpg",
+            "babus-black-h3.jpg",
+            "babus-black-h4.jpg",
+            "babus-black-h5.jpg",
+            "babus-black-h6.jpg",
+            "babus-black-h7.jpg",
+            "babus-black-h8.jpg",
+            "babus-black-h9.jpg",
+            "babus-black-h10.jpg",
+            "babus-black-h11.jpg",
+            "babus-black-h12.jpg",
+            "babus-black-h13.jpg",
+            "babus-black-h14.jpg",
+            "babus-black-h15.jpg",
         ]
     },
 
@@ -404,6 +632,9 @@ const collections = {
         images: [
             "swati-black-1.jpg",
             "swati-black-2.jpg",
+            "swati-black-h1.jpg",
+            "swati-black-h2.jpg",
+            "swati-black-h3.jpg",
         ]
     },
 
@@ -418,6 +649,11 @@ const collections = {
         images: [
             "swati-offwhite-1.jpg",
             "swati-offwhite-2.jpg",
+            "swati-offwhite-h1.jpg",
+            "swati-offwhite-h2.jpg",
+            "swati-offwhite-h3.jpg",
+            "swati-offwhite-h4.jpg",
+            "swati-offwhite-h5.jpg",
         ]
     },
 
