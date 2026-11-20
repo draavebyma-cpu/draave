@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the black and white Kani Shawl from Draavebyma.">
+    <title>Kani Shawl | Draavebyma</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        .kani-page {
+            min-height: 100vh;
+            padding: 48px 5% 80px;
+            background: linear-gradient(135deg, #fffdfa, #f5eee6);
+        }
+
+        .kani-header {
+            max-width: 1000px;
+            margin: 0 auto 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .kani-back {
+            color: #806344;
+            font-size: 13px;
+        }
+
+        .kani-title {
+            margin: 0 auto 32px;
+            text-align: center;
+        }
+
+        .kani-title p {
+            margin-bottom: 10px;
+            color: #806344;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+        }
+
+        .kani-title h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 500;
+        }
+
+        .kani-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: clamp(20px, 5vw, 48px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+            align-items: center;
+            gap: clamp(24px, 4vw, 48px);
+            background: #fffdfa;
+            border: 1px solid #eee6dd;
+            box-shadow: 0 20px 45px rgba(67, 52, 39, 0.1);
+        }
+
+        .kani-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .kani-image-button {
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: zoom-in;
+        }
+
+        .kani-image-button:focus-visible {
+            outline: 2px solid #806344;
+            outline-offset: 4px;
+        }
+
+        .kani-gallery img {
+            display: block;
+            width: 100%;
+            max-height: 760px;
+            object-fit: contain;
+            background: linear-gradient(145deg, #f1e8df, #fbf8f4);
+        }
+
+        .kani-info h2 {
+            margin-bottom: 18px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 27px;
+            font-weight: 500;
+        }
+
+        .kani-label {
+            display: block;
+            margin-bottom: 9px;
+            color: #806344;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .kani-colors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .kani-color {
+            padding: 6px 10px;
+            border: 1px solid #e5d9cb;
+            background: #fffdfa;
+            color: #49382b;
+            font-size: 13px;
+        }
+
+        .kani-size {
+            margin-bottom: 20px;
+            color: #62594f;
+            font-size: 14px;
+        }
+
+        .kani-description {
+            color: #62594f;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .kani-viewer {
+            width: min(96vw, 1400px);
+            max-width: none;
+            max-height: 94vh;
+            padding: 14px;
+            border: 1px solid #d5c3b0;
+            background: #fffdfa;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+        }
+
+        .kani-viewer::backdrop {
+            background: rgba(31, 25, 20, 0.88);
+            backdrop-filter: blur(4px);
+        }
+
+        .kani-viewer-toolbar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .kani-viewer-toolbar button {
+            min-width: 42px;
+            min-height: 38px;
+            padding: 6px 12px;
+            border: 1px solid #d5c3b0;
+            background: #f5eee6;
+            color: #49382b;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .kani-viewer-stage {
+            max-height: calc(94vh - 78px);
+            overflow: auto;
+            background: #f1e8df;
+        }
+
+        .kani-viewer-stage img {
+            display: block;
+            max-width: none;
+            height: auto;
+            margin: 0 auto;
+            transform-origin: top left;
+        }
+
+        @media (max-width: 700px) {
+            .kani-page {
+                padding: 28px 20px 56px;
+            }
+
+            .kani-card {
+                grid-template-columns: 1fr;
+            }
+
+            .kani-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ---------- WhatsApp order button ---------- */
+        .wa-order {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 14px 28px;
+            background-color: #25d366;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-decoration: none;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: filter 0.2s ease, transform 0.2s ease;
+        }
+
+        .wa-order:hover {
+            filter: brightness(0.93);
+            transform: translateY(-1px);
+        }
+
+        .wa-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: inline-block;
+            padding: 13px 20px;
+            background-color: #25d366;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="kani-page">
+        <div class="kani-header">
+            <a class="logo" href="index.html">Draavebyma</a>
+            <a class="kani-back" href="index.html#categories">&larr; Back to shop</a>
+        </div>
+
+        <div class="kani-title">
+            <p>WOMEN'S COLLECTION</p>
+            <h1>Kani Shawl</h1>
+        </div>
+
+        <section class="kani-card" aria-label="Kani Shawl in black and white">
+            <div class="kani-gallery">
+                <button class="kani-image-button" type="button" aria-label="Open Kani Shawl black and white color photo">
+                    <img src="images/kani-shawl/_shawl%20product%20photos%20(4).jpg" alt="Kani Shawl available in white and black">
+                </button>
+                <button class="kani-image-button" type="button" aria-label="Open Kani Shawl detail photo">
+                    <img src="images/kani-shawl/_shawl%20product%20photos%20(5).jpg" alt="Close view of the black Kani Shawl">
+                </button>
+            </div>
+            <div class="kani-info">
+                <h2>Kani Shawl</h2>
+                <span class="kani-label">Available colours</span>
+                <div class="kani-colors">
+                    <span class="kani-color">White</span>
+                    <span class="kani-color">Black</span>
+                </div>
+                <span class="kani-label">Size</span>
+                <p class="kani-size">1.25 gaz width &times; 2.5 gaz length</p>
+                <p class="kani-description">A timeless expression of traditional artistry and elegance. This exquisite Kani Shawl features a rich black base adorned with an intricate all-over floral and vine pattern in vibrant shades of rust, burnt orange, mustard, and red. The delicate interconnected floral motifs create a beautifully detailed and graceful appearance.</p>
+                    <a class="wa-order" href="https://wa.me/923001234567?text=Hello%20Draavebyma%21%20I%20want%20to%20order%3A%0A%0AProduct%3A%20Kani%20Shawl%0A%0APlease%20confirm%20availability." target="_blank" rel="noopener">ORDER ON WHATSAPP</a>
+            </div>
+        </section>
+
+    <a class="wa-float" href="https://wa.me/923001234567" target="_blank" rel="noopener">Chat on WhatsApp</a>
+
+    </main>
+
+    <dialog class="kani-viewer" id="kaniViewer" aria-label="Kani Shawl image viewer">
+        <div class="kani-viewer-toolbar">
+            <button type="button" id="kaniZoomOut" aria-label="Zoom out">−</button>
+            <button type="button" id="kaniZoomReset" aria-label="Reset zoom">Reset</button>
+            <button type="button" id="kaniZoomIn" aria-label="Zoom in">+</button>
+            <button type="button" id="kaniCloseViewer" aria-label="Close image viewer">&times;</button>
+        </div>
+        <div class="kani-viewer-stage">
+            <img id="kaniViewerImage" alt="">
+        </div>
+    </dialog>
+
+    <script>
+        const kaniViewer = document.getElementById("kaniViewer");
+        const kaniViewerImage = document.getElementById("kaniViewerImage");
+        const kaniViewerStage = document.querySelector(".kani-viewer-stage");
+        let kaniZoomLevel = 1;
+        let kaniFitScale = 1;
+
+        function setKaniZoom(level) {
+            kaniZoomLevel = Math.min(4, Math.max(1, level));
+            kaniViewerImage.style.width = (kaniViewerImage.naturalWidth * kaniFitScale * kaniZoomLevel) + "px";
+            kaniViewerImage.style.height = (kaniViewerImage.naturalHeight * kaniFitScale * kaniZoomLevel) + "px";
+        }
+
+        document.querySelectorAll(".kani-image-button").forEach(function (button) {
+            button.addEventListener("click", function () {
+                const image = button.querySelector("img");
+                kaniViewerImage.onload = function () {
+                    const maxWidth = window.innerWidth * 0.9;
+                    const maxHeight = window.innerHeight * 0.78;
+                    kaniFitScale = Math.min(maxWidth / kaniViewerImage.naturalWidth, maxHeight / kaniViewerImage.naturalHeight, 1);
+                    kaniViewerStage.scrollTo(0, 0);
+                    setKaniZoom(1);
+                };
+                kaniViewerImage.src = image.src;
+                kaniViewerImage.alt = image.alt;
+
+                if (!kaniViewer.open) {
+                    kaniViewer.showModal();
+                }
+            });
+        });
+
+        document.getElementById("kaniZoomIn").addEventListener("click", function () {
+            setKaniZoom(kaniZoomLevel + 0.25);
+        });
+
+        document.getElementById("kaniZoomOut").addEventListener("click", function () {
+            setKaniZoom(kaniZoomLevel - 0.25);
+        });
+
+        document.getElementById("kaniZoomReset").addEventListener("click", function () {
+            kaniViewerStage.scrollTo(0, 0);
+            setKaniZoom(1);
+        });
+
+        document.getElementById("kaniCloseViewer").addEventListener("click", function () {
+            kaniViewer.close();
+        });
+
+        kaniViewer.addEventListener("click", function (event) {
+            if (event.target === kaniViewer) {
+                kaniViewer.close();
+            }
+        });
+    </script>
+</body>
+
+</html>

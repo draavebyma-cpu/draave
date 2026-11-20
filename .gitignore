@@ -1,0 +1,20 @@
+# Scratch / working folders
+tmp/
+output/
+
+# Windows shortcut
+*.lnk
+
+# Secrets - never commit
+.env
+.env.*
+*.key
+*.pem
+*.secret
+id_rsa
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+node_modules/

@@ -1,0 +1,1126 @@
+/* =========================================================
+   1. GENERAL SETTINGS
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #302a24;
+    background-color: #fffdfa;
+    line-height: 1.6;
+}
+
+.container,
+.header-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 90px 5%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   2. ANNOUNCEMENT BAR
+========================================================= */
+
+.announcement-bar {
+    width: 100%;
+    background-color: #f1e9df;
+    color: #302a24;
+    text-align: center;
+    padding: 11px 15px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   3. HEADER
+========================================================= */
+
+header {
+    width: 100%;
+    min-height: 80px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background-color: #fffdfa;
+    border-bottom: 1px solid #e8ded2;
+    box-shadow: 0 4px 18px rgba(67, 52, 39, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   4. LOGO
+========================================================= */
+
+.logo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   5. NAVIGATION
+========================================================= */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    flex: 1;
+}
+
+nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #302a24;
+    letter-spacing: 0.3px;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #8b6f47;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: #8b6f47;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   6. HEADER ICONS / BUTTONS
+========================================================= */
+
+.header-actions,
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-actions button,
+.header-actions a,
+.header-icons button,
+.header-icons a {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #302a24;
+    padding: 8px;
+    transition: color 0.3s ease;
+}
+
+.header-actions button:hover,
+.header-actions a:hover,
+.header-icons button:hover,
+.header-icons a:hover {
+    color: #8b6f47;
+}
+
+.search-btn,
+.cart-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5d9cb;
+    background: #fffdfa;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.search-btn:hover,
+.cart-btn:hover {
+    border-color: #8b6f47;
+    color: #8b6f47;
+}
+
+
+/* =========================================================
+   7. HERO SECTION
+========================================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+
+    background:
+        radial-gradient(circle at 78% 28%, rgba(255, 255, 255, 0.62), transparent 24%),
+        linear-gradient(135deg, #e8d9c9, #fbf7f2);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 12%;
+    right: 8%;
+    width: clamp(180px, 24vw, 320px);
+    height: clamp(250px, 34vw, 420px);
+    border: 1px solid rgba(128, 99, 68, 0.2);
+    border-radius: 50% 50% 0 0;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "D";
+    position: absolute;
+    right: 9%;
+    bottom: 10%;
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    border: 1px solid rgba(128, 99, 68, 0.45);
+    border-radius: 50%;
+    background: linear-gradient(145deg, #fffdfa, #e8d9c9);
+    box-shadow:
+        0 12px 28px rgba(67, 52, 39, 0.14),
+        inset 0 0 0 5px rgba(255, 253, 250, 0.55),
+        inset 0 0 12px rgba(128, 99, 68, 0.12);
+    color: #806344;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 34px;
+    font-style: italic;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    color: #302a24;
+}
+
+.hero-content p:first-child {
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.hero-content h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 64px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+.hero-content p:first-child {
+    color: #806344;
+}
+
+
+/* =========================================================
+   8. GENERAL BUTTON
+========================================================= */
+
+.btn {
+    display: inline-block;
+    background-color: #49382b;
+    color: #fffdfa;
+    padding: 13px 30px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    border: 1px solid #49382b;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    box-shadow: 0 5px 0 #30251d, 0 8px 16px rgba(67, 52, 39, 0.16);
+}
+
+.btn:hover {
+    background-color: #806344;
+    border-color: #806344;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 #49382b, 0 13px 22px rgba(67, 52, 39, 0.2);
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #30251d, 0 4px 8px rgba(67, 52, 39, 0.14);
+}
+
+
+/* =========================================================
+   9. GENERAL SECTION
+========================================================= */
+
+section {
+    width: 100%;
+}
+
+.categories,
+.products-section,
+.features,
+.newsletter {
+    padding: 90px 5%;
+}
+
+
+/* =========================================================
+   10. SECTION HEADING
+========================================================= */
+
+.section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+}
+
+.section-heading::after {
+    content: "✦";
+    display: block;
+    width: 72px;
+    margin: 18px auto 0;
+    border-bottom: 1px solid #d5c3b0;
+    color: #806344;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.section-heading p:first-child {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #8b6f47;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.section-heading h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.section-heading p:last-child {
+    font-size: 15px;
+    color: #666666;
+}
+
+
+/* =========================================================
+   11. CATEGORY GRID
+========================================================= */
+
+.category-grid {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+
+/* =========================================================
+   12. CATEGORY CARD
+========================================================= */
+
+.category-card {
+    text-align: center;
+    overflow: hidden;
+    perspective: 900px;
+}
+
+.category-image {
+    width: 100%;
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(135deg,
+            #f1e8df,
+            #fbf8f4);
+
+    color: #777777;
+    font-size: 13px;
+
+    margin-bottom: 18px;
+
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease,
+        background-color 0.4s ease;
+    transform: translateZ(0);
+}
+
+.category-card:hover .category-image {
+    transform: rotateX(3deg) scale(1.025);
+    box-shadow: 0 16px 26px rgba(67, 52, 39, 0.13);
+}
+
+.category-card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.category-card a {
+    font-size: 13px;
+    color: #8b6f47;
+    font-weight: 600;
+}
+
+.category-card a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   13. PRODUCT GRID
+========================================================= */
+
+.product-grid {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+
+/* =========================================================
+   14. PRODUCT CARD
+========================================================= */
+
+.product-card {
+    perspective: 1000px;
+    background-color: #fffdfa;
+    border: 1px solid #eee6dd;
+    overflow: hidden;
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+.product-card:hover {
+    transform: translateY(-8px) rotateX(2deg);
+    border-color: #dfcdb9;
+    box-shadow:
+        0 22px 36px rgba(67, 52, 39, 0.14),
+        0 5px 10px rgba(67, 52, 39, 0.06);
+}
+
+
+/* =========================================================
+   15. PRODUCT IMAGE
+========================================================= */
+
+.product-image {
+    width: 100%;
+    height: 380px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(135deg,
+            #f0e9e2,
+            #faf8f6);
+
+    color: #777777;
+    font-size: 13px;
+
+    overflow: hidden;
+}
+
+.product-image img {
+    transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.06);
+}
+
+.product-image>div {
+    text-align: center;
+}
+
+
+/* =========================================================
+   16. SALE / NEW BADGE
+========================================================= */
+
+.sale-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    background-color: #e8dccd;
+    color: #302a24;
+
+    padding: 6px 10px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   17. PRODUCT INFORMATION
+========================================================= */
+
+.product-info {
+    padding: 20px 5px;
+}
+
+.product-info h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.product-info p:not(.price) {
+    color: #777777;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   18. ADD TO CART BUTTON
+========================================================= */
+
+.product-info button {
+    width: 100%;
+
+    border: 1px solid #d9c6b5;
+
+    background-color: #ffffff;
+    color: #302a24;
+
+    padding: 12px 15px;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    box-shadow: 0 3px 0 #e5d7c8;
+}
+
+.product-info button:hover {
+    background-color: #e8dccd;
+    color: #302a24;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(67, 52, 39, 0.12);
+}
+
+.product-info button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 0 #e5d7c8;
+}
+
+
+/* =========================================================
+   19. VIEW ALL
+========================================================= */
+
+.view-all {
+    text-align: center;
+    margin-top: 45px;
+}
+
+.view-all a {
+    display: inline-block;
+
+    border: 1px solid #d9c6b5;
+
+    padding: 13px 30px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.view-all a:hover {
+    background-color: #e8dccd;
+    color: #302a24;
+}
+
+
+/* =========================================================
+   20. SALE SECTION
+========================================================= */
+
+.sale-section {
+    width: 100%;
+    min-height: 400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(135deg,
+            #d9c6b5,
+            #efe6de);
+}
+
+.sale-content {
+    max-width: 600px;
+}
+
+.sale-content p:first-child {
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.sale-content h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 50px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.sale-content p {
+    color: #555555;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   21. FEATURES
+========================================================= */
+
+.features {
+    background-color: #faf7f2;
+}
+
+.feature-grid {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.feature {
+    text-align: center;
+    padding: 25px;
+}
+
+.feature h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #777777;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   22. NEWSLETTER
+========================================================= */
+
+.newsletter {
+    background-color: #f5eee6;
+    text-align: center;
+}
+
+.newsletter-content {
+    max-width: 650px;
+    margin: auto;
+}
+
+.newsletter h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 35px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.newsletter p {
+    color: #666666;
+    margin-bottom: 25px;
+}
+
+.newsletter form {
+    display: flex;
+    max-width: 550px;
+    margin: auto;
+}
+
+.newsletter input {
+    flex: 1;
+
+    padding: 14px 15px;
+
+    border: 1px solid #cccccc;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.newsletter input:focus {
+    border-color: #8b6f47;
+}
+
+.newsletter button {
+    border: none;
+
+    background-color: #e8dccd;
+    color: #302a24;
+
+    padding: 14px 25px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+    background-color: #d9c6b5;
+}
+
+
+/* =========================================================
+   23. FOOTER
+========================================================= */
+
+footer {
+    background-color: #f1e9df;
+    color: #302a24;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+
+    padding: 70px 5%;
+
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.3fr 1.2fr;
+
+    gap: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-column h3 {
+    font-size: 15px;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.footer-column:first-child h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.footer-column p {
+    color: #62594f;
+    font-size: 13px;
+    margin-bottom: 8px;
+    line-height: 1.8;
+}
+
+.footer-column a {
+    color: #62594f;
+    font-size: 13px;
+    margin-bottom: 9px;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #8b6f47;
+}
+
+
+/* =========================================================
+   24. COPYRIGHT
+========================================================= */
+
+.copyright {
+    border-top: 1px solid #d5c7b7;
+
+    text-align: center;
+
+    padding: 20px;
+
+    color: #62594f;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   25. TABLET RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    header {
+        padding: 0 3%;
+        gap: 15px;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+}
+
+
+/* =========================================================
+   26. MOBILE RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero::before {
+        top: 8%;
+        right: -15%;
+    }
+
+    .hero::after {
+        right: 5%;
+        bottom: 5%;
+        width: 58px;
+        height: 58px;
+        font-size: 27px;
+    }
+
+    .announcement-bar {
+        font-size: 11px;
+        padding: 8px 10px;
+    }
+
+
+    /* Header */
+
+    header {
+        min-height: auto;
+
+        padding: 18px 20px;
+
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    nav {
+        order: 3;
+
+        width: 100%;
+
+        flex-wrap: wrap;
+
+        overflow-x: visible;
+
+        justify-content: flex-start;
+
+        padding-bottom: 5px;
+
+        gap: 14px 20px;
+    }
+
+    nav a {
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    .header-icons {
+        gap: 5px;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: 500px;
+        padding: 60px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+
+    /* Sections */
+
+    .categories,
+    .products-section,
+    .features,
+    .newsletter {
+        padding: 60px 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+
+    /* Categories */
+
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .category-image {
+        height: 350px;
+    }
+
+    .category-card:hover .category-image {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .product-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .product-card:hover .product-image img {
+        transform: none;
+    }
+
+
+    /* Products */
+
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .product-image {
+        height: 280px;
+    }
+
+    .product-info {
+        padding: 15px 3px;
+    }
+
+    .product-info h3 {
+        font-size: 15px;
+    }
+
+    .product-info p:not(.price) {
+        font-size: 12px;
+    }
+
+
+    /* Sale */
+
+    .sale-section {
+        min-height: 350px;
+    }
+
+    .sale-content h2 {
+        font-size: 38px;
+    }
+
+
+    /* Features */
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Newsletter */
+
+    .newsletter form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .newsletter input,
+    .newsletter button {
+        width: 100%;
+    }
+
+
+    /* Footer */
+
+    .footer-container {
+        grid-template-columns: 1fr;
+
+        padding: 50px 20px;
+
+        gap: 35px;
+    }
+
+}
+
+
+/* =========================================================
+   27. SMALL MOBILE DEVICES
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 380px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .sale-content h2 {
+        font-size: 32px;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

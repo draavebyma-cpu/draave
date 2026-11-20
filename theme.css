@@ -1,0 +1,865 @@
+/* ---------- Pictures ---------- */
+.product-image img,
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ---------- Floating WhatsApp button ---------- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #ffffff;
+    padding: 14px 22px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* ---------- Shop button in header ---------- */
+.menu-btn {
+    border: 1px solid #222222;
+    background: #ffffff;
+    color: #222222;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-btn:hover {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+/* ---------- Dark blurred background behind the menu ---------- */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 2000;
+}
+
+.menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ---------- Side menu ---------- */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 380px;
+    max-width: 92%;
+    background: rgba(58, 50, 58, 0.9);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    color: #ffffff;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    z-index: 2001;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.side-menu.open {
+    transform: translateX(0);
+}
+
+/* Top bar: back button, title, close button */
+.menu-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu-top h3 {
+    flex: 1;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.menu-back,
+.menu-close {
+    border: none;
+    background: none;
+    color: #ffffff;
+    font-size: 28px;
+    line-height: 1;
+    width: 36px;
+    height: 36px;
+}
+
+.menu-back {
+    visibility: hidden;
+}
+
+.menu-back.show {
+    visibility: visible;
+}
+
+/* Lists */
+.menu-panel {
+    display: none;
+    list-style: none;
+    padding: 8px 16px 30px;
+}
+
+.menu-panel.active {
+    display: block;
+}
+
+.menu-panel button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    background: none;
+    color: #ffffff;
+    font-size: 19px;
+    text-align: left;
+    padding: 18px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    transition: padding-left 0.3s ease;
+}
+
+.menu-panel button:hover {
+    padding-left: 12px;
+}
+
+.menu-arrow {
+    font-size: 24px;
+    opacity: 0.8;
+}
+
+.menu-whatsapp {
+    display: block;
+    text-align: center;
+    background: #25d366;
+    color: #ffffff;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: auto 16px 20px;
+}
+
+/* ---------- Two category cards ---------- */
+.category-grid.two {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+}
+
+@media (max-width: 700px) {
+    .category-grid.two {
+        grid-template-columns: 1fr;
+    }
+}
+
+.category-card a {
+    cursor: pointer;
+}
+
+/* ---------- Filter info above products ---------- */
+.filter-info {
+    max-width: 1200px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: #666666;
+}
+
+.filter-info button {
+    border: 1px solid #222222;
+    background: #ffffff;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.filter-info button:hover {
+    background: #111111;
+    color: #ffffff;
+}
+
+.no-products {
+    display: none;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    color: #666666;
+    padding: 40px 0;
+}
+
+.no-products a {
+    display: inline-block;
+    margin-top: 15px;
+    background: #25d366;
+    color: #ffffff;
+    padding: 12px 24px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* =====================================================
+   SOFT BLUSH AND CHAMPAGNE COLOR SCHEME
+   Light, feminine and calm: pale blush pages, champagne
+   and dusty rose details, deep rosewood for buttons and
+   the footer. Change the colors below and the whole
+   site updates.
+===================================================== */
+:root {
+    --blush-page: #fbf4f1;     /* page background */
+    --pearl: #fffaf8;          /* header, cards */
+    --blush: #f4e3de;          /* newsletter, soft areas */
+    --rose: #e9cdc6;           /* hero and top bar tint */
+    --champagne: #efdfc6;      /* hero tint */
+    --line: #ecdcd6;           /* thin borders */
+    --rose-line: #d9b8b1;      /* button borders */
+    --dusty-rose: #9a5f58;     /* hover and small highlights */
+    --rosewood: #5b3b40;       /* buttons, footer */
+    --rosewood-deep: #43292f;  /* side menu */
+    --plum-text: #3d2a2e;      /* main text */
+    --text-soft: #7a6366;      /* paragraph text */
+    --champagne-light: #e8d2ab;/* highlights on dark */
+}
+
+body {
+    background-color: var(--blush-page);
+    color: var(--plum-text);
+}
+
+/* ---------- Fonts: serif headings, clean body ---------- */
+.logo,
+h1,
+h2,
+.category-card h3,
+.product-info h3,
+.feature h3,
+.menu-top h3,
+.footer-column h3 {
+    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+}
+
+.logo {
+    font-size: 32px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+.section-heading h2 {
+    font-size: 42px;
+}
+
+/* Small rose line under each section title */
+.section-heading h2::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 1px;
+    background-color: var(--dusty-rose);
+    margin: 18px auto 0;
+}
+
+.category-card h3 {
+    font-size: 26px;
+}
+
+.product-info h3 {
+    font-size: 21px;
+}
+
+.feature h3 {
+    font-size: 22px;
+}
+
+.newsletter h2 {
+    font-size: 40px;
+}
+
+/* ---------- Top bar and header ---------- */
+.announcement-bar {
+    background-color: var(--rose);
+    color: var(--rosewood);
+}
+
+header {
+    background-color: var(--pearl);
+    border-bottom: 1px solid var(--line);
+}
+
+nav a,
+.header-icons button,
+.header-icons a {
+    color: var(--plum-text);
+}
+
+nav a:hover,
+.header-icons button:hover,
+.header-icons a:hover {
+    color: var(--dusty-rose);
+}
+
+nav a::after {
+    background-color: var(--dusty-rose);
+}
+
+.menu-btn {
+    background: var(--pearl);
+    border-color: var(--rose-line);
+    color: var(--plum-text);
+}
+
+.menu-btn:hover {
+    background-color: var(--rosewood);
+    border-color: var(--rosewood);
+    color: var(--pearl);
+}
+
+/* ---------- Hero: soft blush to champagne, one thin frame ---------- */
+.hero {
+    position: relative;
+    background:
+        radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.65), transparent 60%),
+        linear-gradient(160deg, #f4dcd5, #efdfc6);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 24px;
+    border: 1px solid rgba(154, 95, 88, 0.35);
+    pointer-events: none;
+}
+
+.hero-content {
+    color: var(--plum-text);
+}
+
+.hero-content p:first-child {
+    color: var(--dusty-rose);
+}
+
+.hero-content p {
+    color: var(--text-soft);
+}
+
+.hero-content h1 {
+    font-size: 78px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--plum-text);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    background-color: var(--rosewood);
+    color: var(--pearl);
+}
+
+.btn:hover {
+    background-color: var(--dusty-rose);
+}
+
+/* ---------- Section headings ---------- */
+.section-heading p:first-child {
+    color: var(--dusty-rose);
+}
+
+.section-heading p:last-child {
+    color: var(--text-soft);
+}
+
+/* ---------- Categories ---------- */
+.category-image {
+    background: linear-gradient(135deg, #f1dfd9, #f8eee2);
+    color: var(--text-soft);
+}
+
+.category-card a {
+    color: var(--dusty-rose);
+}
+
+/* ---------- Products ---------- */
+.product-card {
+    background-color: var(--pearl);
+    border: 1px solid var(--line);
+}
+
+.product-card:hover {
+    box-shadow: 0 10px 30px rgba(91, 59, 64, 0.12);
+}
+
+.product-image {
+    background: linear-gradient(135deg, #f1dfd9, #f9f0e4);
+    color: var(--text-soft);
+}
+
+.product-info {
+    padding: 20px 15px;
+}
+
+.sale-badge {
+    background-color: var(--rosewood);
+    color: var(--pearl);
+}
+
+.product-info p:not(.price) {
+    color: var(--text-soft);
+}
+
+.product-info button {
+    background-color: var(--pearl);
+    border-color: var(--rose-line);
+    color: var(--plum-text);
+}
+
+.product-info button:hover {
+    background-color: var(--rosewood);
+    border-color: var(--rosewood);
+    color: var(--pearl);
+}
+
+.view-all a {
+    border-color: var(--rose-line);
+    color: var(--plum-text);
+}
+
+.view-all a:hover {
+    background-color: var(--rosewood);
+    border-color: var(--rosewood);
+    color: var(--pearl);
+}
+
+.filter-info {
+    color: var(--text-soft);
+}
+
+.filter-info button {
+    background: var(--pearl);
+    border-color: var(--rose-line);
+    color: var(--plum-text);
+}
+
+.filter-info button:hover {
+    background: var(--rosewood);
+    border-color: var(--rosewood);
+    color: var(--pearl);
+}
+
+.no-products {
+    color: var(--text-soft);
+}
+
+/* ---------- Features ---------- */
+.features {
+    background-color: var(--pearl);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.feature p {
+    color: var(--text-soft);
+}
+
+/* ---------- Newsletter ---------- */
+.newsletter {
+    background-color: var(--blush);
+}
+
+.newsletter p {
+    color: var(--text-soft);
+}
+
+.newsletter input {
+    background-color: #ffffff;
+    border-color: #e0c6c0;
+    color: var(--plum-text);
+}
+
+.newsletter input:focus {
+    border-color: var(--dusty-rose);
+}
+
+.newsletter button {
+    background-color: var(--rosewood);
+    color: var(--pearl);
+}
+
+.newsletter button:hover {
+    background-color: var(--dusty-rose);
+}
+
+/* ---------- Footer: deep rosewood ---------- */
+footer {
+    background-color: var(--rosewood);
+    color: var(--blush-page);
+}
+
+.footer-column h3 {
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    color: var(--champagne-light);
+}
+
+.footer-column p,
+.footer-column a {
+    color: #e6d6d0;
+}
+
+.footer-column a:hover {
+    color: #ffffff;
+}
+
+.copyright {
+    border-top-color: rgba(232, 210, 171, 0.25);
+    color: #c9b5b0;
+}
+
+/* ---------- Side menu: rosewood glass ---------- */
+.menu-overlay {
+    background: rgba(45, 27, 31, 0.45);
+}
+
+.side-menu {
+    background: rgba(67, 41, 47, 0.95);
+    color: var(--blush-page);
+}
+
+.menu-top {
+    border-bottom-color: rgba(232, 210, 171, 0.45);
+}
+
+.menu-back,
+.menu-close,
+.menu-panel button {
+    color: var(--blush-page);
+}
+
+.menu-panel button {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    border-bottom-color: rgba(251, 244, 241, 0.18);
+}
+
+.menu-panel button:hover {
+    color: var(--champagne-light);
+}
+
+.menu-top h3 {
+    font-size: 26px;
+}
+
+/* ---------- Smaller screens (these must come last) ---------- */
+@media (max-width: 1000px) {
+    .hero-content h1 {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 700px) {
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .hero::before {
+        inset: 14px;
+    }
+
+    .section-heading h2,
+    .newsletter h2 {
+        font-size: 34px;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 450px) {
+    .hero-content h1 {
+        font-size: 42px;
+    }
+}
+
+
+/* =====================================================
+   COLLECTION PAGE (pictures of one shawl type)
+===================================================== */
+
+.collection-header {
+    text-align: center;
+    padding: 70px 5% 30px;
+}
+
+.breadcrumb {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+}
+
+.breadcrumb a {
+    color: var(--dusty-rose);
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.collection-header h1 {
+    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    font-size: 58px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.15;
+    color: var(--plum-text);
+}
+
+.collection-header h1::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 1px;
+    background-color: var(--dusty-rose);
+    margin: 20px auto 0;
+}
+
+.collection-header .lead {
+    max-width: 600px;
+    margin: 18px auto 0;
+    color: var(--text-soft);
+}
+
+.gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px 5% 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.gallery.empty {
+    display: block;
+}
+
+.gallery-item {
+    background-color: var(--pearl);
+    border: 1px solid var(--line);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(91, 59, 64, 0.12);
+}
+
+.gallery-photo {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    cursor: zoom-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f1dfd9, #f9f0e4);
+}
+
+.gallery-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover .gallery-photo img {
+    transform: scale(1.04);
+}
+
+.gallery-photo.missing {
+    cursor: default;
+}
+
+.gallery-missing {
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-soft);
+    white-space: pre-line;
+    word-break: break-all;
+}
+
+.gallery-info {
+    padding: 18px 15px 20px;
+    text-align: center;
+}
+
+.gallery-info h3 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.gallery-info button {
+    width: 100%;
+    border: 1px solid var(--rose-line);
+    background-color: var(--pearl);
+    color: var(--plum-text);
+    padding: 12px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.gallery-info button:hover {
+    background-color: var(--rosewood);
+    border-color: var(--rosewood);
+    color: var(--pearl);
+}
+
+/* Links to the other shawls */
+.more-shawls {
+    background-color: var(--pearl);
+    border-top: 1px solid var(--line);
+    padding: 70px 5%;
+    text-align: center;
+}
+
+.more-shawls h2 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.more-group {
+    margin-top: 28px;
+}
+
+.more-group h3 {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dusty-rose);
+    margin-bottom: 12px;
+}
+
+.more-group a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    border: 1px solid var(--rose-line);
+    font-size: 14px;
+    color: var(--plum-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.more-group a:hover,
+.more-group a.active {
+    background-color: var(--rosewood);
+    border-color: var(--rosewood);
+    color: var(--pearl);
+}
+
+/* Big picture viewer */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(45, 27, 31, 0.9);
+    z-index: 3000;
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 92vh;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 14px;
+    right: 22px;
+    border: none;
+    background: none;
+    color: #ffffff;
+    font-size: 40px;
+    line-height: 1;
+}
+
+@media (max-width: 1000px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .collection-header h1 {
+        font-size: 46px;
+    }
+}
+
+@media (max-width: 700px) {
+    .collection-header {
+        padding: 50px 20px 20px;
+    }
+
+    .collection-header h1 {
+        font-size: 38px;
+    }
+
+    .gallery {
+        gap: 14px;
+        padding: 20px 4% 60px;
+    }
+
+    .gallery-info h3 {
+        font-size: 17px;
+    }
+
+    .gallery-info button {
+        font-size: 11px;
+        padding: 10px 6px;
+    }
+
+    /* Keep the floating chat button small on phones so it covers less product */
+    .whatsapp-float,
+    .wa-float {
+        bottom: 14px;
+        right: 14px;
+        padding: 11px 16px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View the Sequence Shawl designs from Draavebyma.">
+    <title>Sequence Shawl | Draavebyma</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        .sequence-page {
+            min-height: 100vh;
+            padding: 48px 5% 80px;
+            background: linear-gradient(135deg, #fffdfa, #f5eee6);
+        }
+
+        .sequence-header {
+            max-width: 1000px;
+            margin: 0 auto 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .sequence-back {
+            color: #806344;
+            font-size: 13px;
+        }
+
+        .sequence-title {
+            width: 100%;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .sequence-title p {
+            margin-bottom: 10px;
+            color: #806344;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+        }
+
+        .sequence-title h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 500;
+        }
+
+        .sequence-design {
+            max-width: 1000px;
+            margin: 0 auto 36px;
+            padding: clamp(16px, 4vw, 40px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(240px, 0.8fr);
+            align-items: center;
+            gap: clamp(24px, 4vw, 48px);
+            background: #fffdfa;
+            border: 1px solid #eee6dd;
+            box-shadow: 0 20px 45px rgba(67, 52, 39, 0.1);
+        }
+
+        .sequence-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .sequence-gallery img {
+            display: block;
+            width: 100%;
+            max-height: 760px;
+            object-fit: contain;
+            background: linear-gradient(145deg, #f1e8df, #fbf8f4);
+        }
+
+        .sequence-image-button {
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: zoom-in;
+        }
+
+        .sequence-image-button:focus-visible {
+            outline: 2px solid #806344;
+            outline-offset: 4px;
+        }
+
+        .image-viewer {
+            width: min(96vw, 1400px);
+            max-width: none;
+            max-height: 94vh;
+            padding: 14px;
+            border: 1px solid #d5c3b0;
+            background: #fffdfa;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+        }
+
+        .image-viewer::backdrop {
+            background: rgba(31, 25, 20, 0.88);
+            backdrop-filter: blur(4px);
+        }
+
+        .image-viewer-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .image-viewer-toolbar button {
+            min-width: 42px;
+            min-height: 38px;
+            padding: 6px 12px;
+            border: 1px solid #d5c3b0;
+            background: #f5eee6;
+            color: #49382b;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .image-viewer-toolbar button:hover {
+            background: #e8dccd;
+        }
+
+        .image-viewer-stage {
+            max-height: calc(94vh - 78px);
+            overflow: auto;
+            text-align: center;
+            background: #f1e8df;
+        }
+
+        .image-viewer-stage img {
+            display: block;
+            margin: 0 auto;
+            max-width: none;
+            height: auto;
+            transform-origin: top left;
+        }
+
+        .sequence-info h2 {
+            margin-bottom: 18px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 27px;
+            font-weight: 500;
+        }
+
+        .sequence-info .sequence-size-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #806344;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .sequence-info .sequence-size {
+            margin-bottom: 20px;
+            color: #62594f;
+            font-size: 14px;
+        }
+
+        .sequence-info .sequence-description {
+            color: #62594f;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 700px) {
+            .sequence-page {
+                padding: 28px 20px 56px;
+            }
+
+            .sequence-design {
+                grid-template-columns: 1fr;
+            }
+
+            .sequence-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ---------- WhatsApp order button ---------- */
+        .wa-order {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 14px 28px;
+            background-color: #25d366;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-decoration: none;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: filter 0.2s ease, transform 0.2s ease;
+        }
+
+        .wa-order:hover {
+            filter: brightness(0.93);
+            transform: translateY(-1px);
+        }
+
+        .wa-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: inline-block;
+            padding: 13px 20px;
+            background-color: #25d366;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="sequence-page">
+        <div class="sequence-header">
+            <a class="logo" href="index.html">Draavebyma</a>
+            <a class="sequence-back" href="index.html#categories">&larr; Back to shop</a>
+        </div>
+
+        <div class="sequence-title">
+            <p>WOMEN'S COLLECTION</p>
+            <h1>Sequence Shawl</h1>
+        </div>
+
+        <section class="sequence-design" aria-label="Sequence Shawl">
+            <div class="sequence-gallery">
+                <button class="sequence-image-button" type="button" aria-label="Open Sequence Shawl front view">
+                    <img src="images/sequence-shawl/_shawl%20product%20photos%20(2).jpg" alt="Sequence Shawl, front view">
+                </button>
+                <button class="sequence-image-button" type="button" aria-label="Open Sequence Shawl detail view">
+                    <img src="images/sequence-shawl/_shawl%20product%20photos%20(3).jpg" alt="Sequence Shawl, detail view">
+                </button>
+            </div>
+            <div class="sequence-info">
+                <h2>Sequence Shawl</h2>
+                <span class="sequence-size-label">Size</span>
+                <p class="sequence-size">1.25 gaz width &times; 2.5 gaz length</p>
+                <p class="sequence-description">A beautiful expression of glamour and sophistication, our Sequin Shawl is designed to add a subtle sparkle to your look. Delicately embellished with shimmering sequins, it creates an eye-catching effect while maintaining an elegant and graceful appeal. The intricate detailing and luxurious fabric make it a perfect statement piece for festive occasions, evening gatherings, and formal events.</p>
+                <a class="wa-order" href="https://wa.me/923001234567?text=Hello%20Draavebyma%21%20I%20want%20to%20order%3A%0A%0AProduct%3A%20Sequence%20Shawl%0A%0APlease%20confirm%20availability." target="_blank" rel="noopener">ORDER ON WHATSAPP</a>
+            </div>
+        </section>
+
+    <a class="wa-float" href="https://wa.me/923001234567" target="_blank" rel="noopener">Chat on WhatsApp</a>
+
+    </main>
+
+    <dialog class="image-viewer" id="imageViewer" aria-label="Image viewer">
+        <div class="image-viewer-toolbar">
+            <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+            <button type="button" id="zoomReset" aria-label="Reset zoom">Reset</button>
+            <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+            <button type="button" id="closeViewer" aria-label="Close image viewer">&times;</button>
+        </div>
+        <div class="image-viewer-stage">
+            <img id="viewerImage" alt="">
+        </div>
+    </dialog>
+
+    <script>
+        const imageViewer = document.getElementById("imageViewer");
+        const viewerImage = document.getElementById("viewerImage");
+        const imageViewerStage = document.querySelector(".image-viewer-stage");
+        let zoomLevel = 1;
+        let fitScale = 1;
+
+        function setViewerZoom(level) {
+            zoomLevel = Math.min(4, Math.max(1, level));
+            viewerImage.style.width = (viewerImage.naturalWidth * fitScale * zoomLevel) + "px";
+            viewerImage.style.height = (viewerImage.naturalHeight * fitScale * zoomLevel) + "px";
+        }
+
+        document.querySelectorAll(".sequence-image-button").forEach(function (button) {
+            button.addEventListener("click", function () {
+                const image = button.querySelector("img");
+                viewerImage.onload = function () {
+                    const maxWidth = window.innerWidth * 0.9;
+                    const maxHeight = window.innerHeight * 0.78;
+                    fitScale = Math.min(maxWidth / viewerImage.naturalWidth, maxHeight / viewerImage.naturalHeight, 1);
+                    imageViewerStage.scrollTo(0, 0);
+                    setViewerZoom(1);
+                };
+                viewerImage.src = image.src;
+                viewerImage.alt = image.alt;
+
+                if (!imageViewer.open) {
+                    imageViewer.showModal();
+                }
+            });
+        });
+
+        document.getElementById("zoomIn").addEventListener("click", function () {
+            setViewerZoom(zoomLevel + 0.25);
+        });
+
+        document.getElementById("zoomOut").addEventListener("click", function () {
+            setViewerZoom(zoomLevel - 0.25);
+        });
+
+        document.getElementById("zoomReset").addEventListener("click", function () {
+            imageViewerStage.scrollTo(0, 0);
+            setViewerZoom(1);
+        });
+
+        document.getElementById("closeViewer").addEventListener("click", function () {
+            imageViewer.close();
+        });
+
+        imageViewer.addEventListener("click", function (event) {
+            if (event.target === imageViewer) {
+                imageViewer.close();
+            }
+        });
+    </script>
+</body>
+
+</html>

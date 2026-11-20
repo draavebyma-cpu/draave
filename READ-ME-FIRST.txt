@@ -1,0 +1,4 @@
+Copy these files into your My-Shop-Website folder (replace index.html and script.js):
+  index.html, collection.html, collection.js, products.js, script.js, theme.css
+Do NOT replace your style.css.
+Pictures go inside the "images" folder, one folder per shawl (for example images/velvet-shawl/).

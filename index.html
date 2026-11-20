@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draavebyma</title>
+
+    <!-- Your main CSS file (the CSS you gave me) -->
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- Extra CSS: pictures, WhatsApp button, side menu -->
+    <style>
+        /* ---------- Pictures ---------- */
+        .product-image img,
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ---------- Floating WhatsApp button ---------- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #e8dccd;
+            color: #302a24;
+            padding: 14px 22px;
+            border: 1px solid #d5c3b0;
+            border-radius: 3px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* ---------- Shop button in header ---------- */
+        .menu-btn {
+            border: 1px solid #d9c6b5;
+            background: #ffffff;
+            color: #302a24;
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            background-color: #e8dccd;
+            color: #302a24;
+        }
+
+        /* ---------- Dark blurred background behind the menu ---------- */
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 2000;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ---------- Side menu ---------- */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 380px;
+            max-width: 92%;
+            background: rgba(247, 242, 237, 0.97);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            color: #302a24;
+            transform: translateX(-100%);
+            transition: transform 0.35s ease;
+            z-index: 2001;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .side-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Top bar: back button, title, close button */
+        .menu-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 20px 16px;
+            border-bottom: 1px solid #d9c6b5;
+        }
+
+        .menu-top h3 {
+            font-family: Georgia, "Times New Roman", serif;
+            flex: 1;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .menu-back,
+        .menu-close {
+            border: none;
+            background: none;
+            color: #302a24;
+            font-size: 28px;
+            line-height: 1;
+            width: 36px;
+            height: 36px;
+        }
+
+        .menu-back {
+            visibility: hidden;
+        }
+
+        .menu-back.show {
+            visibility: visible;
+        }
+
+        /* Lists */
+        .menu-panel {
+            display: none;
+            list-style: none;
+            padding: 8px 16px 30px;
+        }
+
+        .menu-panel.active {
+            display: block;
+        }
+
+        .menu-panel button,
+        .menu-panel .menu-page-link {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: none;
+            background: none;
+            color: #302a24;
+            font-size: 19px;
+            text-align: left;
+            padding: 18px 4px;
+            border-bottom: 1px solid #e8ded2;
+            transition: padding-left 0.3s ease, color 0.3s ease;
+        }
+
+        .menu-panel button:hover,
+        .menu-panel .menu-page-link:hover {
+            padding-left: 12px;
+            color: #806344;
+        }
+
+        .menu-arrow {
+            font-size: 24px;
+            opacity: 0.8;
+        }
+
+        .menu-whatsapp {
+            display: block;
+            text-align: center;
+            background: #e8dccd;
+            color: #302a24;
+            padding: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid #d5c3b0;
+            margin: auto 16px 20px;
+        }
+
+        /* ---------- Two category cards ---------- */
+        .category-grid.two {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 800px;
+        }
+
+        @media (max-width: 700px) {
+            .category-grid.two {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .category-card a {
+            cursor: pointer;
+        }
+
+        .category-explore {
+            border: 0;
+            border-bottom: 1px solid #d5c3b0;
+            background: transparent;
+            color: #806344;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 0;
+            cursor: pointer;
+        }
+
+        .category-explore:hover {
+            color: #49382b;
+            border-color: #49382b;
+        }
+
+        /* ---------- Filter info above products ---------- */
+        .filter-info {
+            max-width: 1200px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .filter-info button {
+            border: 1px solid #d9c6b5;
+            background: #fffdfa;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .filter-info button:hover {
+            background: #e8dccd;
+            color: #302a24;
+        }
+
+        .no-products {
+            display: none;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            color: #666666;
+            padding: 40px 0;
+        }
+
+        .no-products a {
+            display: inline-block;
+            margin-top: 15px;
+            background: #e8dccd;
+            color: #302a24;
+            padding: 12px 24px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #d5c3b0;
+            letter-spacing: 0.8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= ANNOUNCEMENT BAR ================= -->
+    <div class="announcement-bar">
+        Order directly on WhatsApp with Draavebyma &mdash; fast replies, easy delivery
+    </div>
+
+
+    <!-- ================= SIDE MENU =================
+
+         HOW IT WORKS
+         Shop  ->  Shawls  ->  Women / Men  ->  shawl names
+
+         To change a shawl name: edit the text AND data-name on its button,
+         and make the product's <h3> below say exactly the same name.
+    -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <aside class="side-menu" id="sideMenu" aria-label="Shop menu">
+
+        <div class="menu-top">
+            <button class="menu-back" id="menuBack" aria-label="Back">&lsaquo;</button>
+            <h3 id="menuTitle">Shop</h3>
+            <button class="menu-close" id="menuClose" aria-label="Close menu">&times;</button>
+        </div>
+
+        <!-- LEVEL 1: Shop -->
+        <ul class="menu-panel active" data-panel="main">
+            <li><a class="menu-page-link" href="collection.html?c=all">All Products <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+            <li><button data-go="shawls">Shawls <span class="menu-arrow">&rsaquo;</span></button></li>
+        </ul>
+
+        <!-- LEVEL 2: Shawls -> Women / Men -->
+        <ul class="menu-panel" data-panel="shawls">
+            <li><button data-go="women-shawls">Women <span class="menu-arrow">&rsaquo;</span></button></li>
+            <li><button data-go="men-shawls">Men <span class="menu-arrow">&rsaquo;</span></button></li>
+        </ul>
+
+        <!-- LEVEL 3: Women's shawl names -->
+        <ul class="menu-panel" data-panel="women-shawls">
+            <li><a class="menu-page-link" href="collection.html?c=women">All Women Shawls <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+            <li><a class="menu-page-link" href="collection.html?c=booty-shawl">Booty Shawl <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+            <li><a class="menu-page-link" href="sequence.html">Sequence Shawl <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+            <li><a class="menu-page-link" href="collection.html?c=sindhi-shawl">Sindhi Shawl <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+            <li><a class="menu-page-link" href="velvet.html">Velvet Shawl <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+            <li><a class="menu-page-link" href="kani.html">Kani Shawl <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+        </ul>
+
+        <!-- LEVEL 3: Men's shawl names -->
+        <ul class="menu-panel" data-panel="men-shawls">
+            <li><a class="menu-page-link" href="collection.html?c=men">All Men Shawls <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+            <li><a class="menu-page-link" href="collection.html?c=shangriila-shawl">Shangriila Shawl <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+            <li><a class="menu-page-link" href="collection.html?c=atabad-shawl">Atabad Shawl <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+            <li><a class="menu-page-link" href="collection.html?c=96-shawl">96 Shawl <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+            <li><a class="menu-page-link" href="collection.html?c=babus-shawl">Babus Shawl <span
+                        class="menu-arrow">&rsaquo;</span></a></li>
+        </ul>
+
+        <!-- Change the number to your WhatsApp number -->
+        <a class="menu-whatsapp" href="https://wa.me/923001234567" target="_blank" rel="noopener">
+            Order directly on WhatsApp
+        </a>
+
+    </aside>
+
+
+    <!-- ================= HEADER ================= -->
+    <header>
+
+        <a href="#home" class="logo">Draavebyma</a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#categories">Shawls</a>
+            <a href="#features">Why Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+            <button class="menu-btn" id="menuOpen">&#9776; Shop</button>
+            <button class="search-btn">Search</button>
+            <a class="cart-btn" href="https://wa.me/923001234567" target="_blank" rel="noopener">WhatsApp Us</a>
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p>WINTER COLLECTION</p>
+            <h1>Draavebyma</h1>
+            <p>Beautiful shawls for women and men. Message us on WhatsApp to order.</p>
+            <a href="#categories" class="btn">SHOP NOW</a>
+        </div>
+    </section>
+
+
+    <!-- ================= SHAWL CATEGORIES ================= -->
+    <section class="categories" id="categories">
+
+        <div class="section-heading">
+            <p>SHAWLS</p>
+            <h2>Shop Shawls</h2>
+            <p>Choose women's or men's shawls.</p>
+        </div>
+
+        <div class="category-grid two">
+
+            <div class="category-card">
+                <div class="category-image">
+                    <img src="images/category-women.jpg" alt="Women Shawls">
+                </div>
+                <h3>Women Shawls</h3>
+                <button class="category-explore" type="button" data-open-panel="women-shawls">Explore</button>
+            </div>
+
+            <div class="category-card">
+                <div class="category-image">
+                    <img src="images/category-men.jpg" alt="Men Shawls">
+                </div>
+                <h3>Men Shawls</h3>
+                <button class="category-explore" type="button" data-open-panel="men-shawls">Explore</button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= FEATURES ================= -->
+    <section class="features" id="features">
+        <div class="feature-grid">
+
+            <div class="feature">
+                <h3>Quality Products</h3>
+                <p>Every item is checked before it reaches you.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Fast Delivery</h3>
+                <p>We deliver quickly to your doorstep.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Easy Ordering</h3>
+                <p>Order directly with us on WhatsApp.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Friendly Support</h3>
+                <p>Questions? We reply personally.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= NEWSLETTER ================= -->
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2>Join Our Newsletter</h2>
+            <p>Get news about new arrivals and offers.</p>
+
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">SUBSCRIBE</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="contact">
+
+        <div class="footer-container">
+
+            <div class="footer-column">
+                <h3>Draavebyma</h3>
+                <p>Quality shawls, made with care and delivered to your door.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>QUICK LINKS</h3>
+                <a href="#home">Home</a>
+                <a href="#categories">Shawls</a>
+                <a href="#features">Why Us</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>CONTACT</h3>
+                <p>WhatsApp: 0300 1234567</p>
+                <p>Email: info@draavebyma.com</p>
+                <a href="https://wa.me/923001234567" target="_blank" rel="noopener">Chat with us</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>FOLLOW US</h3>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">TikTok</a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            &copy; 2026 Draavebyma. All rights reserved.
+        </div>
+
+    </footer>
+
+
+    <!-- Floating WhatsApp button -->
+    <a class="whatsapp-float" href="https://wa.me/923001234567" target="_blank" rel="noopener">Chat on WhatsApp</a>
+
+    <script src="JS/main.js"></script>
+</body>
+
+</html>

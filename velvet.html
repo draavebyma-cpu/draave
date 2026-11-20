@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Velvet Shawl collection from Draavebyma.">
+    <title>Velvet Shawl | Draavebyma</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        .velvet-page {
+            min-height: 100vh;
+            padding: 48px 5% 80px;
+            background: linear-gradient(135deg, #fffdfa, #f5eee6);
+        }
+
+        .velvet-page-header {
+            max-width: 1100px;
+            margin: 0 auto 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .velvet-back {
+            color: #806344;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .velvet-back:hover {
+            text-decoration: underline;
+        }
+
+        .velvet-card {
+            max-width: 1000px;
+            margin: 0 auto 36px;
+            padding: clamp(20px, 5vw, 56px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+            align-items: center;
+            gap: clamp(28px, 5vw, 64px);
+            background: #fffdfa;
+            border: 1px solid #eee6dd;
+            box-shadow: 0 24px 55px rgba(67, 52, 39, 0.1);
+        }
+
+        .velvet-gallery {
+            min-width: 0;
+        }
+
+        .velvet-title {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: -12px;
+        }
+
+        .velvet-title .eyebrow {
+            margin-bottom: 10px;
+            color: #806344;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+        }
+
+        .velvet-title h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 500;
+            line-height: 1.1;
+        }
+
+        .velvet-image-wrap {
+            min-height: 300px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background: linear-gradient(145deg, #f1e8df, #fbf8f4);
+        }
+
+        .velvet-image-wrap img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-height: 620px;
+            object-fit: contain;
+        }
+
+        .velvet-copy .eyebrow {
+            margin-bottom: 12px;
+            color: #806344;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+        }
+
+        .velvet-copy h1 {
+            margin-bottom: 18px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 500;
+            line-height: 1.1;
+        }
+
+        .velvet-price {
+            margin-bottom: 22px;
+            color: #49382b;
+            font-size: 23px;
+            font-weight: 600;
+        }
+
+        .velvet-details {
+            margin-bottom: 24px;
+            padding: 18px 0;
+            border-top: 1px solid #e8ded2;
+            border-bottom: 1px solid #e8ded2;
+        }
+
+        .velvet-detail-label {
+            display: block;
+            margin-bottom: 10px;
+            color: #806344;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .velvet-colors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .velvet-color {
+            padding: 6px 10px;
+            border: 1px solid #e5d9cb;
+            background: #fffdfa;
+            color: #49382b;
+            font-size: 13px;
+        }
+
+        .velvet-size {
+            margin: 0;
+            color: #62594f;
+            font-size: 14px;
+        }
+
+        .velvet-copy .velvet-description {
+            margin: 0 0 28px;
+            color: #62594f;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 700px) {
+            .velvet-page {
+                padding: 28px 20px 56px;
+            }
+
+            .velvet-card {
+                grid-template-columns: 1fr;
+            }
+
+            .velvet-image-wrap {
+                min-height: 240px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ---------- WhatsApp order button ---------- */
+        .wa-order {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 14px 28px;
+            background-color: #25d366;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-decoration: none;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: filter 0.2s ease, transform 0.2s ease;
+        }
+
+        .wa-order:hover {
+            filter: brightness(0.93);
+            transform: translateY(-1px);
+        }
+
+        .wa-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: inline-block;
+            padding: 13px 20px;
+            background-color: #25d366;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="velvet-page">
+        <div class="velvet-page-header">
+            <a class="logo" href="index.html">Draavebyma</a>
+            <a class="velvet-back" href="index.html#categories">&larr; Back to shop</a>
+        </div>
+
+        <article class="velvet-card">
+            <div class="velvet-title">
+                <p class="eyebrow">WOMEN'S COLLECTION</p>
+                <h1>Velvet Shawl — Design 1</h1>
+            </div>
+            <div class="velvet-gallery">
+                <div class="velvet-image-wrap">
+                    <img src="images/velvet-shawl/_shawl%20product%20photos%20(1).jpg" alt="Draavebyma Velvet Shawl design 1">
+                </div>
+            </div>
+            <div class="velvet-copy">
+                <p class="velvet-price">Price: Rs. 3,400</p>
+                <div class="velvet-details">
+                    <span class="velvet-detail-label">Available colours</span>
+                    <div class="velvet-colors">
+                        <span class="velvet-color">Deep blue</span>
+                        <span class="velvet-color">Black</span>
+                        <span class="velvet-color">Maroon</span>
+                        <span class="velvet-color">Chocolate brown</span>
+                    </div>
+                    <span class="velvet-detail-label">Size</span>
+                    <p class="velvet-size">1.25 gaz width &times; 2.5 gaz length</p>
+                </div>
+                <p class="velvet-description">Rich velvet timeless elegance collection. A shade that speaks for itself, crafted into a statement of understated sophistication. With four-sided lace, our velvet shawl brings together luxurious texture and classic charm.</p>
+                <a class="wa-order" href="https://wa.me/923001234567?text=Hello%20Draavebyma%21%20I%20want%20to%20order%3A%0A%0AProduct%3A%20Velvet%20Shawl%20%E2%80%94%20Design%201%0A%0APlease%20confirm%20availability." target="_blank" rel="noopener">ORDER ON WHATSAPP</a>
+            </div>
+        </article>
+
+        <article class="velvet-card">
+            <div class="velvet-title">
+                <p class="eyebrow">WOMEN'S COLLECTION</p>
+                <h1>Velvet Shawl — Design 2</h1>
+            </div>
+            <div class="velvet-gallery">
+                <div class="velvet-image-wrap">
+                    <img src="images/velvet-shawl/Untitled%20design.jpg" alt="Draavebyma Velvet Shawl design 2">
+                </div>
+            </div>
+            <div class="velvet-copy">
+                <p class="velvet-price">Price: Rs. 3,400</p>
+                <div class="velvet-details">
+                    <span class="velvet-detail-label">Available colours</span>
+                    <div class="velvet-colors">
+                        <span class="velvet-color">Deep blue</span>
+                        <span class="velvet-color">Black</span>
+                        <span class="velvet-color">Maroon</span>
+                        <span class="velvet-color">Chocolate brown</span>
+                    </div>
+                    <span class="velvet-detail-label">Size</span>
+                    <p class="velvet-size">1.25 gaz width &times; 2.5 gaz length</p>
+                </div>
+                <p class="velvet-description">Rich velvet timeless elegance collection. A shade that speaks for itself, crafted into a statement of understated sophistication. With four-sided lace, our velvet shawl brings together luxurious texture and classic charm.</p>
+                <a class="wa-order" href="https://wa.me/923001234567?text=Hello%20Draavebyma%21%20I%20want%20to%20order%3A%0A%0AProduct%3A%20Velvet%20Shawl%20%E2%80%94%20Design%202%0A%0APlease%20confirm%20availability." target="_blank" rel="noopener">ORDER ON WHATSAPP</a>
+            </div>
+        </article>
+
+    <a class="wa-float" href="https://wa.me/923001234567" target="_blank" rel="noopener">Chat on WhatsApp</a>
+
+    </main>
+</body>
+
+</html>
