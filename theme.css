@@ -863,3 +863,195 @@ footer {
         font-size: 12px;
     }
 }
+
+
+/* =========================================================
+   PRODUCT CATALOGUE (one card per shawl)
+===================================================== */
+
+.collection-body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px 5% 80px;
+}
+
+.collection-body.empty {
+    display: block;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.product-card {
+    background-color: var(--pearl);
+    border: 1px solid var(--line);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(91, 59, 64, 0.12);
+}
+
+.product-photo {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    cursor: zoom-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f1dfd9, #f9f0e4);
+}
+
+.product-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-photo img {
+    transform: scale(1.04);
+}
+
+.product-info {
+    padding: 18px 15px 20px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.product-price {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--dusty-rose);
+    margin-bottom: 14px;
+}
+
+.product-details {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--plum-text);
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.product-details:hover {
+    color: var(--dusty-rose);
+}
+
+.product-info button {
+    width: 100%;
+    border: 1px solid var(--rose-line);
+    background-color: var(--pearl);
+    color: var(--plum-text);
+    padding: 12px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-info button:hover {
+    background-color: var(--rosewood);
+    border-color: var(--rosewood);
+    color: var(--pearl);
+}
+
+
+/* =========================================================
+   ONE SHAWL (its card picture, then its other pictures)
+===================================================== */
+
+.product-hero {
+    max-width: 520px;
+    margin: 0 auto 34px;
+    cursor: zoom-in;
+}
+
+.product-hero img {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 14px 40px rgba(91, 59, 64, 0.14);
+}
+
+.product-buy {
+    max-width: 520px;
+    margin: 0 auto 56px;
+    text-align: center;
+}
+
+.product-buy h2 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--plum-text);
+}
+
+.product-buy .product-price {
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.product-subtitle {
+    text-align: center;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--plum-text);
+    margin-bottom: 28px;
+}
+
+.product-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+
+@media (max-width: 900px) {
+    .product-grid,
+    .product-photos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .product-grid,
+    .product-photos {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-body {
+        padding: 20px 4% 60px;
+    }
+
+    .product-hero,
+    .product-buy {
+        max-width: 100%;
+    }
+
+    .product-buy h2 {
+        font-size: 26px;
+    }
+
+    .product-subtitle {
+        font-size: 24px;
+    }
+}

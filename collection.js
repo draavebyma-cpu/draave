@@ -1,7 +1,14 @@
 // ==========================================
 // DRAAVEBYMA - COLLECTION PAGE
-// Reads the shawl from the link (collection.html?c=booty-shawl)
-// and shows its pictures from products.js
+//
+//   collection.html?c=women  /  ?c=men  /  ?c=all
+//       -> a card for every shawl, using its main card picture
+//
+//   collection.html?c=<shawl id>
+//       -> the shawl's main card picture with all its other
+//          pictures shown underneath it
+//
+// Everything is read from products.js
 // ==========================================
 
 
@@ -10,7 +17,7 @@
 // ==========================================
 
 const params = new URLSearchParams(window.location.search);
-const key = params.get("c") || "women";
+const key = params.get("c") || "all";
 
 const breadcrumbEl = document.getElementById("breadcrumb");
 const titleEl = document.getElementById("collectionTitle");
@@ -24,92 +31,75 @@ function genderLabel(gender) {
 
 }
 
+// 3400 -> "3,400"
+function formatPrice(price) {
+
+    return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+}
+
+function priceText(price) {
+
+    return "Rs. " + formatPrice(price);
+
+}
+
+function shawlImagePath(shawl, file) {
+
+    return encodeURI("images/" + shawl.folder + "/" + file);
+
+}
+
+
+// ==========================================
+// 2. WHAT SHOULD THE PAGE SHOW?
+// ==========================================
+
 let pageTitle = "";
 let crumbs = "";
 let description = "";
-let items = [];
-let showShawlName = false;
+let shawls = [];
+let single = null;
 
 if (key === "all") {
 
-    // Every shawl, women and men together
     pageTitle = "All Shawls";
     crumbs = '<a href="index.html">Home</a> / ' + pageTitle;
     description = "Every shawl we make, for women and men.";
-    showShawlName = true;
-
-    Object.keys(collections).forEach(function (id) {
-
-        const shawl = collections[id];
-
-        shawl.images.forEach(function (file, index) {
-
-            items.push({
-                shawl: shawl,
-                file: file,
-                number: index + 1
-            });
-
-        });
-
-    });
 
 } else if (key === "women" || key === "men") {
 
-    // All shawls for women, or all shawls for men
     pageTitle = genderLabel(key) + " Shawls";
     crumbs = '<a href="index.html">Home</a> / ' + pageTitle;
-    description = "All our shawls for " + genderLabel(key).toLowerCase() + ".";
-    showShawlName = true;
+    description = "All our " + genderLabel(key).toLowerCase() + " shawls, ready to order.";
 
+}
+
+if (key === "all" || key === "women" || key === "men") {
+
+    // The catalogue: one card per shawl
     Object.keys(collections).forEach(function (id) {
 
         const shawl = collections[id];
 
-        if (shawl.gender === key) {
-
-            shawl.images.forEach(function (file, index) {
-
-                items.push({
-                    shawl: shawl,
-                    file: file,
-                    number: index + 1
-                });
-
-            });
-
+        if (key === "all" || shawl.gender === key) {
+            shawls.push(shawl);
         }
 
     });
 
 } else if (collections[key]) {
 
-    // One shawl, for example Booty Shawl
-    const shawl = collections[key];
+    // One shawl, for example Rich Velvet Shawl (Mahroon)
+    single = collections[key];
 
-    pageTitle = shawl.name;
-    description = shawl.description;
+    pageTitle = single.name;
+    description = single.description;
 
     crumbs =
         '<a href="index.html">Home</a> / ' +
-        '<a href="collection.html?c=' + shawl.gender + '">' +
-        genderLabel(shawl.gender) + ' Shawls</a> / ' + shawl.name;
-
-    shawl.images.forEach(function (file, index) {
-
-        items.push({
-            shawl: shawl,
-            file: file,
-            number: index + 1
-        });
-
-    });
-
-} else {
-
-    pageTitle = "Shawl not found";
-    crumbs = '<a href="index.html">Home</a>';
-    description = "Please choose a shawl from the list below.";
+        '<a href="collection.html?c=' + single.gender + '">' +
+        genderLabel(single.gender) + ' Shawls</a> / ' + single.name;
 
 }
 
@@ -123,7 +113,7 @@ textEl.style.display = description ? "" : "none";
 
 
 // ==========================================
-// 2. PICTURE VIEWER (click a picture to enlarge)
+// 3. PICTURE VIEWER (click a picture to enlarge)
 // ==========================================
 
 const lightbox = document.getElementById("lightbox");
@@ -166,30 +156,116 @@ document.addEventListener("keydown", function (event) {
 
 
 // ==========================================
-// 3. BUILD THE PICTURE GRID
+// 4. ORDERING ON WHATSAPP
 // ==========================================
 
-function buildCard(item) {
+function orderButton(shawl, extra) {
 
-    const shawl = item.shawl;
+    const button = document.createElement("button");
+    button.innerText = "ORDER ON WHATSAPP";
 
-    // Where the picture should be saved, for example images/booty-shawl/booty-1.jpg
-    const path = encodeURI("images/" + shawl.folder + "/" + item.file);
+    button.addEventListener("click", function () {
 
-    const caption = showShawlName
-        ? shawl.name + " - Design " + item.number
-        : "Design " + item.number;
+        openWhatsApp(
+            "Hello draavebyma! I want to order:\n\n" +
+            "Shawl: " + shawl.name + " (" + genderLabel(shawl.gender) + ")\n" +
+            "Price: " + priceText(shawl.price) + "\n" +
+            (extra || "") +
+            "\nPlease confirm availability."
+        );
+
+    });
+
+    return button;
+
+}
+
+
+// ==========================================
+// 5. THE CATALOGUE (women / men / all)
+// ==========================================
+
+function buildProductCard(shawl) {
+
+    const card = document.createElement("div");
+    card.className = "product-card";
+
+    // The main card picture
+    const photo = document.createElement("div");
+    photo.className = "product-photo";
+
+    const img = document.createElement("img");
+    img.src = shawlImagePath(shawl, shawl.card);
+    img.alt = shawl.name;
+    img.loading = "lazy";
+
+    photo.addEventListener("click", function () {
+        openLightbox(img.src, img.alt);
+    });
+
+    photo.appendChild(img);
+    card.appendChild(photo);
+
+    // Name, price and buttons
+    const info = document.createElement("div");
+    info.className = "product-info";
+
+    const title = document.createElement("h3");
+    title.innerText = shawl.name;
+
+    const price = document.createElement("p");
+    price.className = "product-price";
+    price.innerText = priceText(shawl.price);
+
+    const details = document.createElement("a");
+    details.className = "product-details";
+    details.href = "collection.html?c=" + shawl.id;
+    details.innerText = "VIEW DETAILS";
+
+    info.appendChild(title);
+    info.appendChild(price);
+    info.appendChild(details);
+    info.appendChild(orderButton(shawl));
+
+    card.appendChild(info);
+
+    return card;
+
+}
+
+if (shawls.length > 0) {
+
+    const grid = document.createElement("div");
+    grid.className = "product-grid";
+
+    shawls.forEach(function (shawl) {
+
+        grid.appendChild(buildProductCard(shawl));
+
+    });
+
+    galleryEl.appendChild(grid);
+
+}
+
+
+// ==========================================
+// 6. ONE SHAWL (its card picture, then its other pictures)
+// ==========================================
+
+function buildPhotoCard(shawl, file, number) {
 
     const card = document.createElement("div");
     card.className = "gallery-item";
 
-    // Picture
+    const path = shawlImagePath(shawl, file);
+
     const photo = document.createElement("div");
     photo.className = "gallery-photo";
 
     const img = document.createElement("img");
     img.src = path;
-    img.alt = shawl.name + " design " + item.number;
+    img.alt = shawl.name + " photo " + number;
     img.loading = "lazy";
 
     // If the picture file is not found, show where to save it
@@ -215,48 +291,74 @@ function buildCard(item) {
     });
 
     photo.appendChild(img);
+    card.appendChild(photo);
 
-    // Name and order button
     const info = document.createElement("div");
     info.className = "gallery-info";
 
     const title = document.createElement("h3");
-    title.innerText = caption;
-
-    const button = document.createElement("button");
-    button.innerText = "ORDER ON WHATSAPP";
-
-    button.addEventListener("click", function () {
-
-        openWhatsApp(
-            "Hello draavebyma! I want to order:\n\n" +
-            "Shawl: " + shawl.name + " (" + genderLabel(shawl.gender) + ")\n" +
-            "Design: " + item.number + "\n" +
-            "Photo: " + item.file + "\n\n" +
-            "Please confirm availability."
-        );
-
-    });
+    title.innerText = "Photo " + number;
 
     info.appendChild(title);
-    info.appendChild(button);
+    info.appendChild(orderButton(shawl, "Photo: " + file + "\n"));
 
-    card.appendChild(photo);
     card.appendChild(info);
 
     return card;
 
 }
 
-if (items.length > 0) {
+if (single) {
 
-    items.forEach(function (item) {
+    // The main card picture, big, at the top
+    const hero = document.createElement("div");
+    hero.className = "product-hero";
 
-        galleryEl.appendChild(buildCard(item));
+    const heroImg = document.createElement("img");
+    heroImg.src = shawlImagePath(single, single.card);
+    heroImg.alt = single.name;
+
+    hero.addEventListener("click", function () {
+        openLightbox(heroImg.src, heroImg.alt);
+    });
+
+    hero.appendChild(heroImg);
+    galleryEl.appendChild(hero);
+
+    // Name, price and the order button
+    const buy = document.createElement("div");
+    buy.className = "product-buy";
+
+    const buyTitle = document.createElement("h2");
+    buyTitle.innerText = single.name;
+
+    const buyPrice = document.createElement("p");
+    buyPrice.className = "product-price";
+    buyPrice.innerText = priceText(single.price);
+
+    buy.appendChild(buyTitle);
+    buy.appendChild(buyPrice);
+    buy.appendChild(orderButton(single));
+    galleryEl.appendChild(buy);
+
+    // The other pictures, under the card picture
+    const sub = document.createElement("h2");
+    sub.className = "product-subtitle";
+    sub.innerText = "All photos";
+    galleryEl.appendChild(sub);
+
+    const photos = document.createElement("div");
+    photos.className = "gallery product-photos";
+
+    single.images.forEach(function (file, index) {
+
+        photos.appendChild(buildPhotoCard(single, file, index + 1));
 
     });
 
-} else {
+    galleryEl.appendChild(photos);
+
+} else if (shawls.length === 0) {
 
     // No pictures yet
     galleryEl.classList.add("empty");
@@ -277,7 +379,7 @@ if (items.length > 0) {
 
 
 // ==========================================
-// 4. "MORE SHAWLS" LINKS AT THE BOTTOM
+// 7. "MORE SHAWLS" LINKS AT THE BOTTOM
 // ==========================================
 
 ["women", "men"].forEach(function (gender) {
@@ -297,7 +399,7 @@ if (items.length > 0) {
 
             const link = document.createElement("a");
             link.href = "collection.html?c=" + id;
-            link.innerText = shawl.name;
+            link.innerText = shawl.name + " - " + priceText(shawl.price);
 
             if (id === key) {
                 link.className = "active";

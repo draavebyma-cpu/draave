@@ -13,6 +13,10 @@ output/
 *.secret
 id_rsa
 
+# Unedited source PNGs of the shawls (kept on this computer only).
+# The site uses the JPG copies in images/, so these are not deployed.
+images/_originals_png/
+
 # OS / editor
 .DS_Store
 Thumbs.db

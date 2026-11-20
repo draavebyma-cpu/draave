@@ -49,6 +49,7 @@ body {
 .categories,
 .features,
 .gallery,
+.collection-body,
 .more-shawls,
 .newsletter,
 .footer-container,
@@ -70,6 +71,7 @@ header,
 .category-card,
 .feature,
 .gallery-item,
+.product-card,
 .newsletter-content,
 .velvet-card,
 .kani-card,
@@ -124,6 +126,22 @@ header {
     overflow: hidden;
 }
 
+.product-card {
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius);
+    box-shadow: var(--glass-shadow), var(--glass-inset);
+    overflow: hidden;
+}
+
+.product-card:hover {
+    box-shadow: 0 18px 44px rgba(61, 42, 46, 0.16), var(--glass-inset);
+}
+
+.product-photo {
+    background: transparent !important;
+}
+
 .category-card:hover,
 .feature:hover,
 .gallery-item:hover {
@@ -151,6 +169,7 @@ header {
 .search-btn,
 .cart-btn,
 .gallery-info button,
+.product-info button,
 .no-products a {
     background: rgba(255, 252, 250, 0.5) !important;
     -webkit-backdrop-filter: blur(14px) saturate(160%);
@@ -163,6 +182,7 @@ header {
 .search-btn:hover,
 .cart-btn:hover,
 .gallery-info button:hover,
+.product-info button:hover,
 .no-products a:hover {
     background: rgba(255, 252, 250, 0.8) !important;
 }
@@ -215,6 +235,7 @@ header {
     .category-card,
     .feature,
     .gallery-item,
+    .product-card,
     .newsletter-content,
     .velvet-card,
     .kani-card,
@@ -283,6 +304,7 @@ nav a,
 .category-card,
 .feature,
 .gallery-item,
+.product-card,
 .newsletter-content,
 .whatsapp-float,
 .wa-float {
