@@ -1,0 +1,407 @@
+/* =========================================================
+   GLASSMORPHISM
+   Frosted panels over a soft coloured ambience.
+   Loaded last so it wins over the base stylesheets.
+========================================================= */
+
+:root {
+    --glass-blur: 18px;
+    --glass-blur-strong: 26px;
+    --glass-bg: rgba(255, 252, 250, 0.42);
+    --glass-bg-strong: rgba(255, 252, 250, 0.58);
+    --glass-border: rgba(255, 255, 255, 0.62);
+    --glass-shadow: 0 10px 34px rgba(61, 42, 46, 0.10);
+    --glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    --glass-radius: 14px;
+}
+
+
+/* =========================================================
+   1. THE AMBIENCE BEHIND THE GLASS
+   Painted on the body itself so it is always behind every
+   translucent surface. Fixed attachment keeps it steady while
+   scrolling, so panels always have colour to refract.
+========================================================= */
+
+body {
+    background-color: #fbf4f1 !important;
+    background-image:
+        radial-gradient(38% 32% at 8% 6%, rgba(226, 168, 158, 0.50), transparent 70%),
+        radial-gradient(34% 30% at 92% 12%, rgba(236, 205, 150, 0.48), transparent 70%),
+        radial-gradient(42% 36% at 82% 62%, rgba(232, 186, 178, 0.46), transparent 72%),
+        radial-gradient(40% 34% at 14% 58%, rgba(198, 214, 208, 0.42), transparent 70%),
+        radial-gradient(36% 30% at 50% 96%, rgba(240, 214, 200, 0.50), transparent 72%);
+    background-attachment: fixed, fixed, fixed, fixed, fixed;
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   2. SECTIONS MUST NOT BE OPAQUE
+   A solid section colour would hide the ambience and the glass
+   would have nothing to show through.
+========================================================= */
+
+.categories,
+.features,
+.gallery,
+.more-shawls,
+.newsletter,
+.footer-container,
+.velvet-page,
+.kani-page,
+.sequence-page {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+
+/* =========================================================
+   3. GLASS SURFACES
+========================================================= */
+
+header,
+.announcement-bar,
+.side-menu,
+.category-card,
+.feature,
+.gallery-item,
+.newsletter-content,
+.velvet-card,
+.kani-card,
+.sequence-design {
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+}
+
+
+/* ---------- Header ---------- */
+
+header {
+    background: rgba(255, 250, 248, 0.52) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 4px 24px rgba(61, 42, 46, 0.07);
+}
+
+.announcement-bar {
+    background: rgba(244, 224, 217, 0.45) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(12px) saturate(160%);
+}
+
+
+/* ---------- Side menu drawer ---------- */
+
+.side-menu {
+    background: rgba(250, 242, 238, 0.52) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(200%);
+    backdrop-filter: blur(var(--glass-blur-strong)) saturate(200%);
+    border-right: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 24px 0 60px rgba(61, 42, 46, 0.16);
+}
+
+.menu-overlay {
+    background: rgba(61, 42, 46, 0.26) !important;
+    -webkit-backdrop-filter: blur(8px) saturate(130%);
+    backdrop-filter: blur(8px) saturate(130%);
+}
+
+
+/* ---------- Cards and panels ---------- */
+
+.category-card,
+.feature,
+.gallery-item {
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius);
+    box-shadow: var(--glass-shadow), var(--glass-inset);
+    overflow: hidden;
+}
+
+.category-card:hover,
+.feature:hover,
+.gallery-item:hover {
+    box-shadow: 0 18px 44px rgba(61, 42, 46, 0.16), var(--glass-inset);
+}
+
+.category-image,
+.gallery-photo,
+.velvet-image-wrap {
+    background: transparent !important;
+}
+
+.newsletter-content {
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 44px 34px;
+    box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+
+/* ---------- Buttons and floating controls ---------- */
+
+.menu-btn,
+.search-btn,
+.cart-btn,
+.gallery-info button,
+.no-products a {
+    background: rgba(255, 252, 250, 0.5) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.72) !important;
+    box-shadow: 0 6px 20px rgba(61, 42, 46, 0.08);
+}
+
+.menu-btn:hover,
+.search-btn:hover,
+.cart-btn:hover,
+.gallery-info button:hover,
+.no-products a:hover {
+    background: rgba(255, 252, 250, 0.8) !important;
+}
+
+.whatsapp-float,
+.wa-float {
+    background: rgba(37, 211, 102, 0.84) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.34);
+}
+
+.whatsapp-float:hover,
+.wa-float:hover {
+    background: rgba(37, 211, 102, 0.96) !important;
+}
+
+
+/* ---------- Product page panels ---------- */
+
+.velvet-card,
+.kani-card,
+.sequence-design {
+    background: rgba(255, 253, 250, 0.5) !important;
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.kani-image-button,
+.sequence-image-button {
+    background: transparent !important;
+}
+
+
+/* =========================================================
+   4. FALLBACK FOR BROWSERS WITHOUT BACKDROP-FILTER
+========================================================= */
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    header {
+        background: #fffaf8 !important;
+    }
+
+    .side-menu {
+        background: #f8f0ec !important;
+    }
+
+    .category-card,
+    .feature,
+    .gallery-item,
+    .newsletter-content,
+    .velvet-card,
+    .kani-card,
+    .sequence-design {
+        background: rgba(255, 253, 250, 0.94) !important;
+    }
+}
+
+
+/* =========================================================
+   5. SMOOTH ANIMATIONS
+========================================================= */
+
+header {
+    animation: glassHeaderReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    transition:
+        background-color 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+/* Denser glass once the page is scrolled */
+header.scrolled {
+    background: rgba(255, 250, 248, 0.8) !important;
+    box-shadow: 0 12px 34px rgba(61, 42, 46, 0.14);
+}
+
+@keyframes glassHeaderReveal {
+    from {
+        opacity: 0;
+        translate: 0 -20px;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@keyframes glassFadeUp {
+    from {
+        opacity: 0;
+        translate: 0 26px;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@keyframes glassFloat {
+    0%,
+    100% {
+        translate: 0 0;
+    }
+    50% {
+        translate: 0 -6px;
+    }
+}
+
+/* Everything eases into place */
+.logo,
+nav a,
+.menu-btn,
+.search-btn,
+.cart-btn,
+.category-card,
+.feature,
+.gallery-item,
+.newsletter-content,
+.whatsapp-float,
+.wa-float {
+    transition:
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.3s ease,
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.4s ease,
+        opacity 0.3s ease;
+}
+
+nav a::after {
+    transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+    color: #8b6f47;
+}
+
+.menu-btn:hover,
+.search-btn:hover,
+.cart-btn:hover {
+    transform: translateY(-2px);
+    border-color: rgba(139, 111, 71, 0.5) !important;
+    color: #8b6f47;
+    box-shadow: 0 12px 26px rgba(61, 42, 46, 0.14);
+}
+
+/* Hero copy fades in one line at a time */
+.hero-content > * {
+    animation: glassFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-content > *:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.hero-content > *:nth-child(2) {
+    animation-delay: 0.22s;
+}
+
+.hero-content > *:nth-child(3) {
+    animation-delay: 0.34s;
+}
+
+.hero-content > *:nth-child(4) {
+    animation-delay: 0.46s;
+}
+
+/* The floating WhatsApp button breathes gently */
+.whatsapp-float,
+.wa-float {
+    animation: glassFloat 3.4s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   6. FADE IN AS YOU SCROLL
+   The class is added by JS, so the page still shows
+   everything if JavaScript is switched off.
+========================================================= */
+
+.reveal {
+    opacity: 0;
+    translate: 0 30px;
+    transition:
+        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        translate 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    translate: 0 0;
+}
+
+
+/* =========================================================
+   7. MOBILE HEADER
+   Keeps the header from pushing the page sideways.
+========================================================= */
+
+@media (max-width: 700px) {
+
+    header {
+        min-height: auto;
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 10px 8px;
+    }
+
+    .logo {
+        font-size: 19px;
+        flex: 1;
+    }
+
+    .header-icons {
+        order: 2;
+        gap: 6px;
+    }
+
+    .header-icons .menu-btn,
+    .header-icons .search-btn,
+    .header-icons .cart-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+        letter-spacing: 0.2px;
+    }
+
+    /* The floating WhatsApp button already covers this on phones */
+    .header-icons .cart-btn {
+        display: none;
+    }
+
+    nav {
+        order: 3;
+        flex: 0 0 100%;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 12px 18px;
+        padding-bottom: 2px;
+    }
+
+}
