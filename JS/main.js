@@ -7,14 +7,16 @@
 // 1. WHATSAPP SETTINGS
 // ==========================================
 
-// Your number: country code + number, no + sign, no spaces, no leading 0
+// Your number lives in products.js - the one file you edit to change it.
 // Example: +92 325 3113232  ->  923253113232
-const whatsappNumber = "923253113232";
+// The fallback below keeps this file working on its own.
+const shopWhatsappNumber =
+    (typeof whatsappNumber !== "undefined") ? whatsappNumber : "923253113232";
 
 function openWhatsApp(message) {
 
     const url =
-        "https://wa.me/" + whatsappNumber +
+        "https://wa.me/" + shopWhatsappNumber +
         "?text=" + encodeURIComponent(message);
 
     window.open(url, "_blank");
@@ -242,24 +244,102 @@ document.querySelectorAll(".js-filter").forEach(function (trigger) {
 
 
 // ==========================================
-// 5. SEARCH BUTTON (sends search to WhatsApp)
+// 5. SIDE MENU SHAWL LIST (built from products.js)
 // ==========================================
+//
+// A shawl that comes in more than one colour is shown as ONE row,
+// with its colours listed underneath it.
+// (example: "Rich Velvet Shawl" -> Mahroon, Brown, Blue, Mungiya)
 
-const searchButton = document.querySelector(".search-btn");
+function buildShawlMenu(panelId, gender) {
 
-if (searchButton) {
+    const panel = document.querySelector(".menu-panel[data-panel=\"" + panelId + "\"]");
 
-    searchButton.addEventListener("click", function () {
+    if (!panel || typeof collections === "undefined") return;
 
-        const searchText = prompt("What are you looking for?");
+    // Group the shawls, keeping the order they appear in products.js
+    const groups = [];
+    const groupIndex = {};
 
-        if (searchText) {
-            openWhatsApp("Hello Draavebyma! I am looking for: " + searchText);
+    Object.keys(collections).forEach(function (id) {
+
+        const product = collections[id];
+
+        if (product.gender !== gender) return;
+
+        const groupName = product.group || product.name;
+
+        if (!groupIndex[groupName]) {
+            groupIndex[groupName] = { name: groupName, items: [] };
+            groups.push(groupIndex[groupName]);
         }
+
+        groupIndex[groupName].items.push(product);
 
     });
 
+    function money(product) {
+        return "Rs. " + product.price.toLocaleString("en-US");
+    }
+
+    function pageLink(id) {
+        return "collection.html?c=" + id;
+    }
+
+    let html = "";
+
+    groups.forEach(function (group) {
+
+        const items = group.items;
+
+        // Only one shawl in this group -> a single row, no colour list
+        if (items.length === 1) {
+
+            const product = items[0];
+
+            html +=
+                "<li><a class=\"menu-page-link\" href=\"" + pageLink(product.id) + "\">" +
+                "<span>" + product.name + "</span>" +
+                "<span class=\"menu-price\">" + money(product) + "</span>" +
+                "<span class=\"menu-arrow\">&rsaquo;</span></a></li>";
+
+            return;
+
+        }
+
+        // More than one colour -> one row for the shawl, colours underneath
+        const samePrice = items.every(function (product) {
+            return product.price === items[0].price;
+        });
+
+        html +=
+            "<li class=\"menu-group\">" +
+            "<a class=\"menu-page-link\" href=\"" + pageLink(items[0].id) + "\">" +
+            "<span>" + group.name + "</span>" +
+            (samePrice ? "<span class=\"menu-price\">" + money(items[0]) + "</span>" : "") +
+            "<span class=\"menu-arrow\">&rsaquo;</span></a>" +
+            "<ul class=\"menu-variants\">";
+
+        items.forEach(function (product) {
+
+            html +=
+                "<li><a class=\"menu-variant-link\" href=\"" + pageLink(product.id) + "\">" +
+                "<span>" + (product.color || product.name) + "</span>" +
+                (samePrice ? "" : "<span class=\"menu-price\">" + money(product) + "</span>") +
+                "<span class=\"menu-arrow\">&rsaquo;</span></a></li>";
+
+        });
+
+        html += "</ul></li>";
+
+    });
+
+    panel.insertAdjacentHTML("beforeend", html);
+
 }
+
+buildShawlMenu("women-shawls", "women");
+buildShawlMenu("men-shawls", "men");
 
 
 // ==========================================

@@ -166,7 +166,6 @@ nav a:hover::after {
     color: #8b6f47;
 }
 
-.search-btn,
 .cart-btn {
     display: inline-flex;
     align-items: center;
@@ -179,7 +178,6 @@ nav a:hover::after {
     letter-spacing: 0.5px;
 }
 
-.search-btn:hover,
 .cart-btn:hover {
     border-color: #8b6f47;
     color: #8b6f47;
@@ -394,6 +392,7 @@ section {
     text-align: center;
     overflow: hidden;
     perspective: 900px;
+    padding-bottom: 22px;
 }
 
 .category-image {

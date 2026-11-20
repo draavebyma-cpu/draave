@@ -106,27 +106,6 @@ document.querySelectorAll("[data-link]").forEach(function (button) {
 
 
 // ==========================================
-// 2. SEARCH BUTTON (sends search to WhatsApp)
-// ==========================================
-
-const searchButton = document.querySelector(".search-btn");
-
-if (searchButton) {
-
-    searchButton.addEventListener("click", function () {
-
-        const searchText = prompt("What are you looking for?");
-
-        if (searchText) {
-            openWhatsApp("Hello draavebyma! I am looking for: " + searchText);
-        }
-
-    });
-
-}
-
-
-// ==========================================
 // 3. NEWSLETTER
 // ==========================================
 
