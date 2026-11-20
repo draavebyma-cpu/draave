@@ -8,8 +8,8 @@
 // ==========================================
 
 // Your number: country code + number, no + sign, no spaces, no leading 0
-// Example: 0300 1234567  ->  923001234567
-const whatsappNumber = "923001234567";
+// Example: +92 325 3113232  ->  923253113232
+const whatsappNumber = "923253113232";
 
 function openWhatsApp(message) {
 
