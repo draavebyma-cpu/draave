@@ -343,28 +343,25 @@ buildShawlMenu("men-shawls", "men");
 
 
 // ==========================================
-// 6. NEWSLETTER
+// 6. INQUIRY
 // ==========================================
 
-const newsletterForm = document.querySelector(".newsletter-form");
+const inquiryForm = document.querySelector(".inquiry-form");
 
-if (newsletterForm) {
+if (inquiryForm) {
 
-    newsletterForm.addEventListener("submit", function (event) {
+    // The form posts straight to the official mail, so we must NOT
+    // preventDefault here - the browser needs to submit it.
+    // Native "required" fields handle the validation.
 
-        event.preventDefault();
+    inquiryForm.addEventListener("submit", function () {
 
-        const emailInput = newsletterForm.querySelector("input");
-        const email = emailInput.value.trim();
+        const button = inquiryForm.querySelector("button[type='submit']");
 
-        if (email === "") {
-            alert("Please enter your email address.");
-            return;
+        if (button) {
+            button.disabled = true;
+            button.textContent = "SENDING...";
         }
-
-        alert("Thank you for subscribing!");
-
-        emailInput.value = "";
 
     });
 

@@ -788,6 +788,83 @@ section {
     background-color: #d9c6b5;
 }
 
+/* --- Inquiry (replaces the old newsletter form) --- */
+
+.newsletter .inquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 550px;
+    margin: auto;
+}
+
+.newsletter .inquiry-form input,
+.newsletter .inquiry-form textarea {
+    width: 100%;
+    flex: none;
+
+    padding: 14px 15px;
+
+    border: 1px solid #cccccc;
+
+    outline: none;
+
+    background-color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    color: #302a24;
+}
+
+.newsletter .inquiry-form textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.newsletter .inquiry-form input:focus,
+.newsletter .inquiry-form textarea:focus {
+    border-color: #8b6f47;
+}
+
+.newsletter .inquiry-form button {
+    width: 100%;
+    padding: 15px 25px;
+}
+
+.newsletter .inquiry-form button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.inquiry-email {
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+
+    color: #8b6f47;
+
+    text-decoration: underline;
+
+    transition: color 0.3s ease;
+}
+
+.inquiry-email:hover {
+    color: #5f4a2c;
+}
+
+.inquiry-note {
+    margin-top: 18px;
+    margin-bottom: 0;
+
+    font-size: 13px;
+
+    color: #8a8078;
+}
+
 
 /* =========================================================
    23. FOOTER
@@ -1082,6 +1159,7 @@ footer {
     }
 
     .newsletter input,
+    .newsletter textarea,
     .newsletter button {
         width: 100%;
     }

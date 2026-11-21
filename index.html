@@ -472,16 +472,36 @@
     </section>
 
 
-    <!-- ================= NEWSLETTER ================= -->
-    <section class="newsletter">
-        <div class="newsletter-content">
-            <h2>Join Our Newsletter</h2>
-            <p>Get news about new arrivals and offers.</p>
+    <!-- ================= INQUIRY ================= -->
 
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email address">
-                <button type="submit">SUBSCRIBE</button>
+    <!--
+        OFFICIAL MAIL - every inquiry sent here lands in draavebyma@gmail.com
+        Change the two draavebyma@gmail.com addresses below if you ever need to.
+    -->
+    <section class="newsletter" id="inquiry">
+        <div class="newsletter-content">
+            <h2>Send Us Any Inquiry</h2>
+            <p>Questions about a shawl, bulk orders or delivery? Write to us on our official mail.</p>
+
+            <a class="inquiry-email" href="mailto:draavebyma@gmail.com">draavebyma@gmail.com</a>
+
+            <form class="inquiry-form"
+                  action="https://formsubmit.co/draavebyma@gmail.com"
+                  method="POST">
+
+                <input type="hidden" name="_subject" value="New inquiry - Draavebyma">
+                <input type="hidden" name="_next" value="https://draavebyma.vercel.app/">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <input type="text" name="name" placeholder="Your name" autocomplete="name">
+                <input type="email" name="email" placeholder="Your email address" autocomplete="email" required>
+                <textarea name="message" rows="4" placeholder="Your inquiry" required></textarea>
+
+                <button type="submit">SEND INQUIRY</button>
             </form>
+
+            <p class="inquiry-note">We reply to every inquiry, usually within a day.</p>
         </div>
     </section>
 
@@ -506,7 +526,7 @@
             <div class="footer-column">
                 <h3>CONTACT</h3>
                 <p>WhatsApp: <a href="tel:+923253113232">+92 325 3113232</a></p>
-                <p>Email: info@draavebyma.com</p>
+                <p>Email: <a href="mailto:draavebyma@gmail.com">draavebyma@gmail.com</a></p>
                 <a href="https://wa.me/923253113232" target="_blank" rel="noopener">Chat with us</a>
             </div>
 
